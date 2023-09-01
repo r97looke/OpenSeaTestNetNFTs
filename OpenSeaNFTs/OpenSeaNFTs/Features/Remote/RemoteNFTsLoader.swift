@@ -22,7 +22,17 @@ public class RemoteNFTsLoader: NFTsLoader {
     }
     
     public func load(next: String? = nil, completion: @escaping (LoadResult) -> Void) {
-        client.get(from: url) { [weak self] result in
+        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+        if let next = next {
+            urlComponents.queryItems = [URLQueryItem(name: "limit", value: "20"),
+                                        URLQueryItem(name: "next", value: next)]
+        }
+        else {
+            urlComponents.queryItems = [URLQueryItem(name: "limit", value: "20")]
+        }
+        
+        let updatedURL = urlComponents.url!
+        client.get(from: updatedURL) { [weak self] result in
             guard self != nil else { return }
             
             switch result {
@@ -35,7 +45,7 @@ public class RemoteNFTsLoader: NFTsLoader {
                     return
                 }
                 
-                completion(.success(remoteNFTResponse.nfts.map{ $0.toModel() }))
+                completion(.success((remoteNFTResponse.nfts.map{ $0.toModel() }, remoteNFTResponse.next)))
             }
         }
     }

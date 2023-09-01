@@ -9,4 +9,5 @@ import Foundation
 
 public struct RemoteNFTResponse: Codable {
     public let nfts: [RemoteNFTInfo]
+    public let next: String?
 }

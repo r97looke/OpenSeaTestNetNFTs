@@ -1,0 +1,7 @@
+${PODS_ROOT}/Target Support Files/Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests/Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework
+${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework
+${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/SDWebImageSVGCoder/SDWebImageSVGCoder.framework
+${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
