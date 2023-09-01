@@ -62,7 +62,7 @@ class NFTInfoCell: UICollectionViewCell {
         didSet {
             if let model = model {
                 nameLabel.text = model.name
-                if let imageURL = URL(string: model.image_url) {
+                if let image_url = model.image_url, let imageURL = URL(string: image_url) {
                     imageView.sd_setImage(with: imageURL)
                 }
                 else {

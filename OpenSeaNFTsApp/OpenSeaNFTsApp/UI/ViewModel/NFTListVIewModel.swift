@@ -15,11 +15,12 @@ class NFTListViewModel {
     private let loader: NFTsLoader
     private var next: String?
     private var isRefresh = false
+    private var isLoading = false
+    private var isAllLoaded = false
     
     // MARK: Output
     let isRefreshing = PublishRelay<Bool>()
     let isNextLoading = PublishRelay<Bool>()
-    let isAllLoaded = PublishRelay<Bool>()
     let displayModels = BehaviorRelay<[NFTInfoModel]>(value: [])
     
     var models = [NFTInfoModel]()
@@ -52,11 +53,20 @@ class NFTListViewModel {
         models.removeAll()
         next = nil
         isRefresh = true
-        isAllLoaded.accept(false)
+        isAllLoaded = false
         loadNextPage()
     }
     
     func loadNextPage() {
+        if isAllLoaded {
+            return
+        }
+        
+        if isLoading {
+            return
+        }
+        
+        isLoading = true
         if isRefresh {
             isRefreshing.accept(true)
         }
@@ -86,10 +96,13 @@ class NFTListViewModel {
                 displayModels.accept(self.models)
                 
                 if loadedNext == nil {
-                    self.isAllLoaded.accept(true)
+                    self.isAllLoaded = true
                 }
+                self.next = loadedNext
+                self.isLoading = false
                 
                 if (self.isRefresh) {
+                    self.isRefresh = false
                     self.isRefreshing.accept(false)
                 }
                 else {

@@ -65,7 +65,7 @@ final class NFTListViewController: UIViewController {
         loadingView.color = .blue
         view.addSubview(loadingView)
         loadingView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-DefaultMargin)
+            make.bottom.equalTo(collectionView).offset(-DefaultMargin)
             make.centerX.equalToSuperview()
         }
     }
@@ -85,6 +85,13 @@ final class NFTListViewController: UIViewController {
             guard let self = self else { return }
             
             self.collectionView.collectionViewLayout.invalidateLayout()
+        }.disposed(by: disposeBag)
+        collectionView.rx.willDisplayCell.subscribe { [weak self] cell, indexPath in
+            guard let self = self else { return }
+
+            if indexPath.item + 1 == self.collectionView.numberOfItems(inSection: 0) {
+                self.viewModel.loadNextPageModels.accept(Void())
+            }
         }.disposed(by: disposeBag)
         
         refresh()

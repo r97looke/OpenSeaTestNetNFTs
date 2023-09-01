@@ -23,14 +23,12 @@ struct OpenSeaNFTsAppSettings {
     }
     
     static func nftsEndpointURL() -> URL {
-        let queryItem = [URLQueryItem(name: "limit", value: "20")]
         let url = endpointURL()
         return url.appendingPathComponent("chain")
             .appendingPathComponent(chain())
             .appendingPathComponent("account")
             .appendingPathComponent(account())
             .appendingPathComponent("nfts")
-            .appending(queryItems: queryItem)
     }
 }
 
