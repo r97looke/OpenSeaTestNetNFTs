@@ -85,7 +85,6 @@
 			children = (
 				BB1F9EB32AA2174A007DEB44 /* Features */,
 				BB04B4302AA1CBFC0013D816 /* OpenSeaNFTs.h */,
-				BB04B4472AA1CC810013D816 /* NFTInfo.swift */,
 				BB04B4312AA1CBFC0013D816 /* OpenSeaNFTs.docc */,
 			);
 			path = OpenSeaNFTs;
@@ -102,13 +101,22 @@
 		BB1F9EB32AA2174A007DEB44 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				BB1F9EB42AA2175C007DEB44 /* HTTPClient.swift */,
+				BB04B4472AA1CC810013D816 /* NFTInfo.swift */,
 				BB1F9EB62AA22EA3007DEB44 /* NFTsLoader.swift */,
+				BB1F9EBE2AA22FEE007DEB44 /* Remote */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		BB1F9EBE2AA22FEE007DEB44 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				BB1F9EB42AA2175C007DEB44 /* HTTPClient.swift */,
 				BB1F9EB82AA22EDC007DEB44 /* RemoteNFTResponse.swift */,
 				BB1F9EBA2AA22EE9007DEB44 /* RemoteNFTInfo.swift */,
 				BB1F9EBC2AA22F51007DEB44 /* RemoteNFTsLoader.swift */,
 			);
-			path = Features;
+			path = Remote;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
