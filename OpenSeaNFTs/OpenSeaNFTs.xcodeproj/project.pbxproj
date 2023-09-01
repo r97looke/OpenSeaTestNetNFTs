@@ -14,6 +14,8 @@
 		BB04B44A2AA1CD1A0013D816 /* LoadNFTsFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB04B4492AA1CD1A0013D816 /* LoadNFTsFromRemoteUseCaseTests.swift */; };
 		BB1F9EB52AA2175C007DEB44 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F9EB42AA2175C007DEB44 /* HTTPClient.swift */; };
 		BB1F9EB72AA22EA3007DEB44 /* NFTsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F9EB62AA22EA3007DEB44 /* NFTsLoader.swift */; };
+		BB1F9EB92AA22EDC007DEB44 /* RemoteNFTResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F9EB82AA22EDC007DEB44 /* RemoteNFTResponse.swift */; };
+		BB1F9EBB2AA22EE9007DEB44 /* RemoteNFTInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F9EBA2AA22EE9007DEB44 /* RemoteNFTInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 		BB04B4492AA1CD1A0013D816 /* LoadNFTsFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadNFTsFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 		BB1F9EB42AA2175C007DEB44 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		BB1F9EB62AA22EA3007DEB44 /* NFTsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTsLoader.swift; sourceTree = "<group>"; };
+		BB1F9EB82AA22EDC007DEB44 /* RemoteNFTResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNFTResponse.swift; sourceTree = "<group>"; };
+		BB1F9EBA2AA22EE9007DEB44 /* RemoteNFTInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNFTInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 			children = (
 				BB1F9EB42AA2175C007DEB44 /* HTTPClient.swift */,
 				BB1F9EB62AA22EA3007DEB44 /* NFTsLoader.swift */,
+				BB1F9EB82AA22EDC007DEB44 /* RemoteNFTResponse.swift */,
+				BB1F9EBA2AA22EE9007DEB44 /* RemoteNFTInfo.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -213,6 +219,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB04B4482AA1CC810013D816 /* NFTInfo.swift in Sources */,
+				BB1F9EB92AA22EDC007DEB44 /* RemoteNFTResponse.swift in Sources */,
+				BB1F9EBB2AA22EE9007DEB44 /* RemoteNFTInfo.swift in Sources */,
 				BB1F9EB72AA22EA3007DEB44 /* NFTsLoader.swift in Sources */,
 				BB04B4322AA1CBFC0013D816 /* OpenSeaNFTs.docc in Sources */,
 				BB1F9EB52AA2175C007DEB44 /* HTTPClient.swift in Sources */,

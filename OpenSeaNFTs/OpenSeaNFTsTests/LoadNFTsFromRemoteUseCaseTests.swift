@@ -8,19 +8,6 @@
 import XCTest
 import OpenSeaNFTs
 
-struct RemoteNFTResponse: Codable {
-    let nfts: [RemoteNFTInfo]
-}
-
-struct RemoteNFTInfo: Codable {
-    let identifier: String
-    let collection: String
-    let contract: String
-    let name: String
-    let description: String
-    let image_url: String
-}
-
 private extension RemoteNFTInfo {
     func toModel() -> NFTInfo {
         return NFTInfo(identifier: identifier,
