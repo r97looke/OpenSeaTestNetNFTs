@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct NFTInfo {
-    let identifier: String
-    let collection: String
-    let contract: String
-    let name: String
-    let description: String
-    let image_url: String
+public struct NFTInfo {
+    public let identifier: String
+    public let collection: String
+    public let contract: String
+    public let name: String
+    public let description: String
+    public let image_url: String
 }

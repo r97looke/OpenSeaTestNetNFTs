@@ -74,8 +74,8 @@
 			isa = PBXGroup;
 			children = (
 				BB04B4302AA1CBFC0013D816 /* OpenSeaNFTs.h */,
-				BB04B4312AA1CBFC0013D816 /* OpenSeaNFTs.docc */,
 				BB04B4472AA1CC810013D816 /* NFTInfo.swift */,
+				BB04B4312AA1CBFC0013D816 /* OpenSeaNFTs.docc */,
 			);
 			path = OpenSeaNFTs;
 			sourceTree = "<group>";
