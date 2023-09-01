@@ -114,6 +114,29 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
         XCTAssertNotNil(receivedError)
     }
     
+    func test_load_deliversErrorOn200HTTPResponseWithInValidData() {
+        let (client, sut) = makeSUT(anyURL())
+        
+        let exp = expectation(description: "Wait load to complete")
+        var receivedError: Error?
+        sut.load { result in
+            switch result {
+            case let .failure(error):
+                receivedError = error
+                
+            default:
+                XCTFail("Expect error, got \(result) instead")
+            }
+            
+            exp.fulfill()
+        }
+        
+        client.completeWith(statusCode: 200, data: Data("invalid data".utf8))
+        
+        wait(for: [exp], timeout: 1.0)
+        XCTAssertNotNil(receivedError)
+    }
+    
     // MARK: Helpers
     private func makeSUT(_ url: URL) -> (client: HTTPClientSpy, sut: RemoteNFTsLoader) {
         let client = HTTPClientSpy()
