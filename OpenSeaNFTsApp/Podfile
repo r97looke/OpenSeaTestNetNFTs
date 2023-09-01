@@ -10,6 +10,7 @@ target 'OpenSeaNFTsApp' do
   pod 'SDWebImage', '~> 5.0'
   pod 'RxSwift', '6.5.0'
   pod 'RxCocoa', '6.5.0'
+  pod 'SDWebImageSVGCoder'
 
   target 'OpenSeaNFTsAppTests' do
     inherit! :search_paths
