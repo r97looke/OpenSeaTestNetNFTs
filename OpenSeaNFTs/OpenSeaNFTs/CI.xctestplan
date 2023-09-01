@@ -1,0 +1,42 @@
+{
+  "configurations" : [
+    {
+      "id" : "A3418B1D-8973-422E-B57A-8367D10FD8CF",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:OpenSeaNFTs.xcodeproj",
+          "identifier" : "BB04B42C2AA1CBFC0013D816",
+          "name" : "OpenSeaNFTs"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:OpenSeaNFTs.xcodeproj",
+        "identifier" : "BB04B4362AA1CBFC0013D816",
+        "name" : "OpenSeaNFTsTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:OpenSeaNFTs.xcodeproj",
+        "identifier" : "BB9CBAC12AA235AB00B53981",
+        "name" : "OpenSeaNFTsRemoteIntegrationsTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -57,6 +57,7 @@
 		BB1F9EBF2AA23041007DEB44 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		BB1F9EC22AA230EC007DEB44 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		BB1F9EC42AA2312E007DEB44 /* XCTestCase+MemoryTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryTracking.swift"; sourceTree = "<group>"; };
+		BB40B64D2AA23B820085D44F /* CI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = CI.xctestplan; path = OpenSeaNFTs/CI.xctestplan; sourceTree = "<group>"; };
 		BB9CBABB2AA234AA00B53981 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		BB9CBABD2AA2350300B53981 /* OpenSeaNFTs.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = OpenSeaNFTs.xctestplan; sourceTree = "<group>"; };
 		BB9CBAC22AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenSeaNFTsRemoteIntegrationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +95,7 @@
 		BB04B4232AA1CBFC0013D816 = {
 			isa = PBXGroup;
 			children = (
+				BB40B64D2AA23B820085D44F /* CI.xctestplan */,
 				BB04B42F2AA1CBFC0013D816 /* OpenSeaNFTs */,
 				BB04B43B2AA1CBFC0013D816 /* OpenSeaNFTsTests */,
 				BB9CBAC32AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests */,
