@@ -20,6 +20,7 @@
 		BB1F9EC02AA23041007DEB44 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F9EBF2AA23041007DEB44 /* URLSessionHTTPClientTests.swift */; };
 		BB1F9EC32AA230EC007DEB44 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F9EC22AA230EC007DEB44 /* Helpers.swift */; };
 		BB1F9EC52AA2312E007DEB44 /* XCTestCase+MemoryTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F9EC42AA2312E007DEB44 /* XCTestCase+MemoryTracking.swift */; };
+		BB9CBABC2AA234AA00B53981 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9CBABB2AA234AA00B53981 /* URLSessionHTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		BB1F9EBF2AA23041007DEB44 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		BB1F9EC22AA230EC007DEB44 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		BB1F9EC42AA2312E007DEB44 /* XCTestCase+MemoryTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryTracking.swift"; sourceTree = "<group>"; };
+		BB9CBABB2AA234AA00B53981 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				BB1F9EB82AA22EDC007DEB44 /* RemoteNFTResponse.swift */,
 				BB1F9EBA2AA22EE9007DEB44 /* RemoteNFTInfo.swift */,
 				BB1F9EBC2AA22F51007DEB44 /* RemoteNFTsLoader.swift */,
+				BB9CBABB2AA234AA00B53981 /* URLSessionHTTPClient.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				BB04B4482AA1CC810013D816 /* NFTInfo.swift in Sources */,
 				BB1F9EB92AA22EDC007DEB44 /* RemoteNFTResponse.swift in Sources */,
 				BB1F9EBB2AA22EE9007DEB44 /* RemoteNFTInfo.swift in Sources */,
+				BB9CBABC2AA234AA00B53981 /* URLSessionHTTPClient.swift in Sources */,
 				BB1F9EB72AA22EA3007DEB44 /* NFTsLoader.swift in Sources */,
 				BB04B4322AA1CBFC0013D816 /* OpenSeaNFTs.docc in Sources */,
 				BB1F9EB52AA2175C007DEB44 /* HTTPClient.swift in Sources */,

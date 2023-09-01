@@ -8,30 +8,6 @@
 import XCTest
 import OpenSeaNFTs
 
-class URLSessionHTTPClient: HTTPClient {
-    private struct InvalidDataResponseErrorCombination: Swift.Error { }
-    
-    let session: URLSession
-    
-    init(session: URLSession = .shared) {
-        self.session = session
-    }
-    
-    func get(from url: URL, completion: @escaping (GETResult) -> Void) {
-        session.dataTask(with: URLRequest(url: url)) { data, response, error in
-            if let clientError = error {
-                completion(.failure(clientError))
-            }
-            else if let data = data, let httpURLResponse = response as? HTTPURLResponse {
-                completion(.success((data, httpURLResponse)))
-            }
-            else {
-                completion(.failure(InvalidDataResponseErrorCombination()))
-            }
-        }.resume()
-    }
-}
-
 final class URLSessionHTTPClientTests: XCTestCase {
     
     override func setUp() {
