@@ -55,7 +55,7 @@ class RemoteNFTsLoader: NFTsLoader {
         self.client = client
     }
     
-    private enum LoadError: Swift.Error {
+    enum LoadError: Swift.Error {
         case connectivity
         case invalidData
     }
@@ -98,117 +98,42 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversErrorOnClientError() {
         let (client, sut) = makeSUT(anyURL())
         
-        let exp = expectation(description: "Wait load to complete")
-        var receivedError: Error?
-        sut.load { result in
-            switch result {
-            case let .failure(error):
-                receivedError = error
-                
-            default:
-                XCTFail("Expect error, got \(result) instead")
-            }
-            
-            exp.fulfill()
+        expect(sut, toCompleteWith: .failure(RemoteNFTsLoader.LoadError.connectivity)) {
+            client.completeWith(error: anyNSError())
         }
-        
-        client.completeWith(error: anyNSError())
-        
-        wait(for: [exp], timeout: 1.0)
-        XCTAssertNotNil(receivedError)
     }
     
     func test_load_deliversErrorOnNon200HTTPResponse() {
         let (client, sut) = makeSUT(anyURL())
         
-        let exp = expectation(description: "Wait load to complete")
-        var receivedError: Error?
-        sut.load { result in
-            switch result {
-            case let .failure(error):
-                receivedError = error
-                
-            default:
-                XCTFail("Expect error, got \(result) instead")
-            }
-            
-            exp.fulfill()
+        expect(sut, toCompleteWith: .failure(RemoteNFTsLoader.LoadError.invalidData)) {
+            client.completeWith(statusCode: 199, data: Data())
         }
-        
-        client.completeWith(statusCode: 199, data: Data())
-        
-        wait(for: [exp], timeout: 1.0)
-        XCTAssertNotNil(receivedError)
     }
     
     func test_load_deliversErrorOn200HTTPResponseWithInValidData() {
         let (client, sut) = makeSUT(anyURL())
         
-        let exp = expectation(description: "Wait load to complete")
-        var receivedError: Error?
-        sut.load { result in
-            switch result {
-            case let .failure(error):
-                receivedError = error
-                
-            default:
-                XCTFail("Expect error, got \(result) instead")
-            }
-            
-            exp.fulfill()
+        expect(sut, toCompleteWith: .failure(RemoteNFTsLoader.LoadError.invalidData)) {
+            client.completeWith(statusCode: 200, data: Data("invalid data".utf8))
         }
-        
-        client.completeWith(statusCode: 200, data: Data("invalid data".utf8))
-        
-        wait(for: [exp], timeout: 1.0)
-        XCTAssertNotNil(receivedError)
     }
     
     func test_load_deliversErrorOn200HTTPResponseWithInEmptyData() {
         let (client, sut) = makeSUT(anyURL())
         
-        let exp = expectation(description: "Wait load to complete")
-        var receivedError: Error?
-        sut.load { result in
-            switch result {
-            case let .failure(error):
-                receivedError = error
-                
-            default:
-                XCTFail("Expect error, got \(result) instead")
-            }
-            
-            exp.fulfill()
+        expect(sut, toCompleteWith: .failure(RemoteNFTsLoader.LoadError.invalidData)) {
+            client.completeWith(statusCode: 200, data: Data())
         }
-        
-        client.completeWith(statusCode: 200, data: Data())
-        
-        wait(for: [exp], timeout: 1.0)
-        XCTAssertNotNil(receivedError)
     }
     
     func test_load_deliversItemsOn200HTTPResponseWithValidData() {
         let expectedNFTs = testNFTs()
         let (client, sut) = makeSUT(anyURL())
         
-        let exp = expectation(description: "Wait load to complete")
-        var receivedNFTs: [NFTInfo]?
-        sut.load { result in
-            switch result {
-            case let .success(nfts):
-                receivedNFTs = nfts
-                
-            default:
-                XCTFail("Expect error, got \(result) instead")
-            }
-            
-            exp.fulfill()
+        expect(sut, toCompleteWith: .success(expectedNFTs)) {
+            client.completeWith(statusCode: 200, data: makeNFTsJSON(expectedNFTs))
         }
-        
-        client.completeWith(statusCode: 200, data: makeNFTsJSON(expectedNFTs))
-        
-        wait(for: [exp], timeout: 1.0)
-        XCTAssertEqual(receivedNFTs, expectedNFTs)
     }
     
     // MARK: Helpers
@@ -216,6 +141,30 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
         let client = HTTPClientSpy()
         let sut = RemoteNFTsLoader(url: url, client: client)
         return (client, sut)
+    }
+    
+    private func expect(_ sut: RemoteNFTsLoader, toCompleteWith expectedResult: NFTsLoader.LoadResult, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        
+        let exp = expectation(description: "Wait load to complete")
+        sut.load { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedNFTs), .success(expectedNFTs)):
+                XCTAssertEqual(receivedNFTs, expectedNFTs, file: file, line: line)
+                break
+                
+            case (.failure, .failure):
+                break
+                
+            default:
+                XCTFail("Expect \(expectedResult), got \(receivedResult) instead", file: file, line: line)
+            }
+            
+            exp.fulfill()
+        }
+        
+        action()
+        
+        wait(for: [exp], timeout: 1.0)
     }
     
     private class HTTPClientSpy: HTTPClient {
