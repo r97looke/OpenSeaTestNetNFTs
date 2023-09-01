@@ -33,9 +33,10 @@ final class NFTListViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        title = viewModel.title
         
         navigationItem.backButtonTitle = ""
+        
+        view.backgroundColor = .white
         
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = NFTInfoCell.DefaultSize
@@ -46,7 +47,7 @@ final class NFTListViewController: UIViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundView = nil
-        collectionView.backgroundColor = .lightGray
+        collectionView.backgroundColor = .white
         
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
@@ -74,6 +75,11 @@ final class NFTListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let titleView = UILabel()
+        titleView.textColor = .black
+        titleView.text = viewModel.title
+        navigationItem.titleView = titleView
         
         viewModel.isRefreshing.bind(to: refreshView.rx.isAnimating).disposed(by: disposeBag)
         viewModel.isNextLoading.bind(to: loadingView.rx.isAnimating).disposed(by: disposeBag)
