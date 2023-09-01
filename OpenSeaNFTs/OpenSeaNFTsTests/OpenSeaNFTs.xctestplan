@@ -1,0 +1,34 @@
+{
+  "configurations" : [
+    {
+      "id" : "72FF2DBE-71DD-457E-B759-3985826A1ABB",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:OpenSeaNFTs.xcodeproj",
+          "identifier" : "BB04B42C2AA1CBFC0013D816",
+          "name" : "OpenSeaNFTs"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:OpenSeaNFTs.xcodeproj",
+        "identifier" : "BB04B4362AA1CBFC0013D816",
+        "name" : "OpenSeaNFTsTests"
+      }
+    }
+  ],
+  "version" : 1
+}

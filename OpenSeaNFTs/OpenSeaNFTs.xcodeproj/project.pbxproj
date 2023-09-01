@@ -49,6 +49,7 @@
 		BB1F9EC22AA230EC007DEB44 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		BB1F9EC42AA2312E007DEB44 /* XCTestCase+MemoryTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryTracking.swift"; sourceTree = "<group>"; };
 		BB9CBABB2AA234AA00B53981 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
+		BB9CBABD2AA2350300B53981 /* OpenSeaNFTs.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = OpenSeaNFTs.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +102,7 @@
 		BB04B43B2AA1CBFC0013D816 /* OpenSeaNFTsTests */ = {
 			isa = PBXGroup;
 			children = (
+				BB9CBABD2AA2350300B53981 /* OpenSeaNFTs.xctestplan */,
 				BB1F9EC22AA230EC007DEB44 /* Helpers.swift */,
 				BB1F9EC42AA2312E007DEB44 /* XCTestCase+MemoryTracking.swift */,
 				BB04B4492AA1CD1A0013D816 /* LoadNFTsFromRemoteUseCaseTests.swift */,
