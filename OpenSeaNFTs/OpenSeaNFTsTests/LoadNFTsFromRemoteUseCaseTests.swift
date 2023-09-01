@@ -153,9 +153,11 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
     }
     
     // MARK: Helpers
-    private func makeSUT(_ url: URL) -> (client: HTTPClientSpy, sut: RemoteNFTsLoader) {
+    private func makeSUT(_ url: URL, file: StaticString = #filePath, line: UInt = #line) -> (client: HTTPClientSpy, sut: RemoteNFTsLoader) {
         let client = HTTPClientSpy()
         let sut = RemoteNFTsLoader(url: url, client: client)
+        trackForMemoryLeaks(client, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
         return (client, sut)
     }
     
@@ -181,6 +183,12 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
         action()
         
         wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should be deallocated. There may be a memory leak.", file: file, line: line)
+        }
     }
     
     private class HTTPClientSpy: HTTPClient {
