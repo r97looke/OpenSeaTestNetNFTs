@@ -12,6 +12,7 @@
 		BB04B43E2AA1CBFC0013D816 /* OpenSeaNFTs.h in Headers */ = {isa = PBXBuildFile; fileRef = BB04B4302AA1CBFC0013D816 /* OpenSeaNFTs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BB04B4482AA1CC810013D816 /* NFTInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB04B4472AA1CC810013D816 /* NFTInfo.swift */; };
 		BB04B44A2AA1CD1A0013D816 /* LoadNFTsFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB04B4492AA1CD1A0013D816 /* LoadNFTsFromRemoteUseCaseTests.swift */; };
+		BB1F9EB52AA2175C007DEB44 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F9EB42AA2175C007DEB44 /* HTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		BB04B4372AA1CBFC0013D816 /* OpenSeaNFTsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenSeaNFTsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB04B4472AA1CC810013D816 /* NFTInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTInfo.swift; sourceTree = "<group>"; };
 		BB04B4492AA1CD1A0013D816 /* LoadNFTsFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadNFTsFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
+		BB1F9EB42AA2175C007DEB44 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		BB04B42F2AA1CBFC0013D816 /* OpenSeaNFTs */ = {
 			isa = PBXGroup;
 			children = (
+				BB1F9EB32AA2174A007DEB44 /* Features */,
 				BB04B4302AA1CBFC0013D816 /* OpenSeaNFTs.h */,
 				BB04B4472AA1CC810013D816 /* NFTInfo.swift */,
 				BB04B4312AA1CBFC0013D816 /* OpenSeaNFTs.docc */,
@@ -86,6 +89,14 @@
 				BB04B4492AA1CD1A0013D816 /* LoadNFTsFromRemoteUseCaseTests.swift */,
 			);
 			path = OpenSeaNFTsTests;
+			sourceTree = "<group>";
+		};
+		BB1F9EB32AA2174A007DEB44 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				BB1F9EB42AA2175C007DEB44 /* HTTPClient.swift */,
+			);
+			path = Features;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +211,7 @@
 			files = (
 				BB04B4482AA1CC810013D816 /* NFTInfo.swift in Sources */,
 				BB04B4322AA1CBFC0013D816 /* OpenSeaNFTs.docc in Sources */,
+				BB1F9EB52AA2175C007DEB44 /* HTTPClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,11 +8,7 @@
 import XCTest
 import OpenSeaNFTs
 
-protocol HTTPClient {
-    typealias GETResult = Swift.Result<(Data, HTTPURLResponse), Error>
-    
-    func get(from url: URL, completion: @escaping (GETResult) -> Void)
-}
+
 
 protocol NFTsLoader {
     typealias LoadResult = Swift.Result<[NFTInfo], Error>
