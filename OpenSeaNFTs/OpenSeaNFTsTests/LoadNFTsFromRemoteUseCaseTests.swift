@@ -61,7 +61,9 @@ class RemoteNFTsLoader: NFTsLoader {
     }
     
     func load(next: String? = nil, completion: @escaping (LoadResult) -> Void) {
-        client.get(from: url) { result in
+        client.get(from: url) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .failure:
                 completion(.failure(LoadError.connectivity))
@@ -134,6 +136,20 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
         expect(sut, toCompleteWith: .success(expectedNFTs)) {
             client.completeWith(statusCode: 200, data: makeNFTsJSON(expectedNFTs))
         }
+    }
+    
+    func test_load_doesNotDeliverResultAfterSUTHasBeenDeallocate() {
+        let client = HTTPClientSpy()
+        var sut: RemoteNFTsLoader? = RemoteNFTsLoader(url: anyURL(), client: client)
+        
+        var receivedResult: NFTsLoader.LoadResult?
+        sut?.load() { result in
+            receivedResult = result
+        }
+        
+        sut = nil
+        client.completeWith(error: anyNSError())
+        XCTAssertNil(receivedResult)
     }
     
     // MARK: Helpers
@@ -221,7 +237,6 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
         let json = ["nfts" : remoteNFTsJSON]
         return try! JSONSerialization.data(withJSONObject: json)
     }
-
 }
 
 
