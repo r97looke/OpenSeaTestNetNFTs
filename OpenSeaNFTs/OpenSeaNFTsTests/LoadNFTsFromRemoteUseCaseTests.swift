@@ -54,16 +54,14 @@ class RemoteNFTsLoader: NFTsLoader {
 final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
 
     func test_init_doesNotRequestDataFromURL() {
-        let client = HTTPClientSpy()
-        let sut = RemoteNFTsLoader(url: anyURL(), client: client)
+        let (client, _) = makeSUT(anyURL())
         
         XCTAssertEqual(client.requestURLs, [])
     }
     
     func test_load_doesRequestsDataFromURL() {
         let url = anyURL()
-        let client = HTTPClientSpy()
-        let sut = RemoteNFTsLoader(url: url, client: client)
+        let (client, sut) = makeSUT(url)
         
         sut.load() { _ in }
         
@@ -71,9 +69,7 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
     }
     
     func test_load_deliversErrorOnClientError() {
-        let url = anyURL()
-        let client = HTTPClientSpy()
-        let sut = RemoteNFTsLoader(url: url, client: client)
+        let (client, sut) = makeSUT(anyURL())
         
         let exp = expectation(description: "Wait load to complete")
         var receivedError: Error?
@@ -96,9 +92,7 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
     }
     
     func test_load_deliversErrorOnNon200HTTPResponse() {
-        let url = anyURL()
-        let client = HTTPClientSpy()
-        let sut = RemoteNFTsLoader(url: url, client: client)
+        let (client, sut) = makeSUT(anyURL())
         
         let exp = expectation(description: "Wait load to complete")
         var receivedError: Error?
@@ -121,6 +115,12 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
     }
     
     // MARK: Helpers
+    private func makeSUT(_ url: URL) -> (client: HTTPClientSpy, sut: RemoteNFTsLoader) {
+        let client = HTTPClientSpy()
+        let sut = RemoteNFTsLoader(url: url, client: client)
+        return (client, sut)
+    }
+    
     private class HTTPClientSpy: HTTPClient {
         var requestURLs = [URL]()
         var completions = [(GETResult) -> Void]()
