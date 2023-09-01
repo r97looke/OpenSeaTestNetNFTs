@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../OpenSeaNFTs/OpenSeaNFTs.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:OpenSeaNFTsApp.xcodeproj">
    </FileRef>
    <FileRef
