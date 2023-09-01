@@ -21,10 +21,19 @@
 		BB1F9EC32AA230EC007DEB44 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F9EC22AA230EC007DEB44 /* Helpers.swift */; };
 		BB1F9EC52AA2312E007DEB44 /* XCTestCase+MemoryTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1F9EC42AA2312E007DEB44 /* XCTestCase+MemoryTracking.swift */; };
 		BB9CBABC2AA234AA00B53981 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9CBABB2AA234AA00B53981 /* URLSessionHTTPClient.swift */; };
+		BB9CBAC52AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9CBAC42AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.swift */; };
+		BB9CBAC62AA235AB00B53981 /* OpenSeaNFTs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB04B42D2AA1CBFC0013D816 /* OpenSeaNFTs.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		BB04B4392AA1CBFC0013D816 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB04B4242AA1CBFC0013D816 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB04B42C2AA1CBFC0013D816;
+			remoteInfo = OpenSeaNFTs;
+		};
+		BB9CBAC72AA235AB00B53981 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BB04B4242AA1CBFC0013D816 /* Project object */;
 			proxyType = 1;
@@ -50,6 +59,8 @@
 		BB1F9EC42AA2312E007DEB44 /* XCTestCase+MemoryTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryTracking.swift"; sourceTree = "<group>"; };
 		BB9CBABB2AA234AA00B53981 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		BB9CBABD2AA2350300B53981 /* OpenSeaNFTs.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = OpenSeaNFTs.xctestplan; sourceTree = "<group>"; };
+		BB9CBAC22AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenSeaNFTsRemoteIntegrationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB9CBAC42AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaNFTsRemoteIntegrationsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +79,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BB9CBABF2AA235AB00B53981 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB9CBAC62AA235AB00B53981 /* OpenSeaNFTs.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -76,6 +95,7 @@
 			children = (
 				BB04B42F2AA1CBFC0013D816 /* OpenSeaNFTs */,
 				BB04B43B2AA1CBFC0013D816 /* OpenSeaNFTsTests */,
+				BB9CBAC32AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests */,
 				BB04B42E2AA1CBFC0013D816 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,6 +105,7 @@
 			children = (
 				BB04B42D2AA1CBFC0013D816 /* OpenSeaNFTs.framework */,
 				BB04B4372AA1CBFC0013D816 /* OpenSeaNFTsTests.xctest */,
+				BB9CBAC22AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,6 +152,14 @@
 				BB9CBABB2AA234AA00B53981 /* URLSessionHTTPClient.swift */,
 			);
 			path = Remote;
+			sourceTree = "<group>";
+		};
+		BB9CBAC32AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests */ = {
+			isa = PBXGroup;
+			children = (
+				BB9CBAC42AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.swift */,
+			);
+			path = OpenSeaNFTsRemoteIntegrationsTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +212,24 @@
 			productReference = BB04B4372AA1CBFC0013D816 /* OpenSeaNFTsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		BB9CBAC12AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB9CBAC92AA235AB00B53981 /* Build configuration list for PBXNativeTarget "OpenSeaNFTsRemoteIntegrationsTests" */;
+			buildPhases = (
+				BB9CBABE2AA235AB00B53981 /* Sources */,
+				BB9CBABF2AA235AB00B53981 /* Frameworks */,
+				BB9CBAC02AA235AB00B53981 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB9CBAC82AA235AB00B53981 /* PBXTargetDependency */,
+			);
+			name = OpenSeaNFTsRemoteIntegrationsTests;
+			productName = OpenSeaNFTsRemoteIntegrationsTests;
+			productReference = BB9CBAC22AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -199,6 +246,9 @@
 					BB04B4362AA1CBFC0013D816 = {
 						CreatedOnToolsVersion = 14.3.1;
 						LastSwiftMigration = 1430;
+					};
+					BB9CBAC12AA235AB00B53981 = {
+						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
 			};
@@ -217,6 +267,7 @@
 			targets = (
 				BB04B42C2AA1CBFC0013D816 /* OpenSeaNFTs */,
 				BB04B4362AA1CBFC0013D816 /* OpenSeaNFTsTests */,
+				BB9CBAC12AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -230,6 +281,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BB04B4352AA1CBFC0013D816 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB9CBAC02AA235AB00B53981 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -265,6 +323,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BB9CBABE2AA235AB00B53981 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB9CBAC52AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -272,6 +338,11 @@
 			isa = PBXTargetDependency;
 			target = BB04B42C2AA1CBFC0013D816 /* OpenSeaNFTs */;
 			targetProxy = BB04B4392AA1CBFC0013D816 /* PBXContainerItemProxy */;
+		};
+		BB9CBAC82AA235AB00B53981 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB04B42C2AA1CBFC0013D816 /* OpenSeaNFTs */;
+			targetProxy = BB9CBAC72AA235AB00B53981 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -488,6 +559,34 @@
 			};
 			name = Release;
 		};
+		BB9CBACA2AA235AB00B53981 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.slchen.OpenSeaNFTsRemoteIntegrationsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		BB9CBACB2AA235AB00B53981 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.slchen.OpenSeaNFTsRemoteIntegrationsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -514,6 +613,15 @@
 			buildConfigurations = (
 				BB04B4452AA1CBFC0013D816 /* Debug */,
 				BB04B4462AA1CBFC0013D816 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB9CBAC92AA235AB00B53981 /* Build configuration list for PBXNativeTarget "OpenSeaNFTsRemoteIntegrationsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB9CBACA2AA235AB00B53981 /* Debug */,
+				BB9CBACB2AA235AB00B53981 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
