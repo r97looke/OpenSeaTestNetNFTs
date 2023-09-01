@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		BB40B65B2AA23CA80085D44F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40B65A2AA23CA80085D44F /* AppDelegate.swift */; };
 		BB40B65D2AA23CA80085D44F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40B65C2AA23CA80085D44F /* SceneDelegate.swift */; };
-		BB40B65F2AA23CA80085D44F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40B65E2AA23CA80085D44F /* ViewController.swift */; };
-		BB40B6622AA23CA80085D44F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB40B6602AA23CA80085D44F /* Main.storyboard */; };
 		BB40B6642AA23CA90085D44F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB40B6632AA23CA90085D44F /* Assets.xcassets */; };
 		BB40B6672AA23CA90085D44F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB40B6652AA23CA90085D44F /* LaunchScreen.storyboard */; };
 		BB40B6722AA23CA90085D44F /* OpenSeaNFTsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40B6712AA23CA90085D44F /* OpenSeaNFTsAppTests.swift */; };
 		BB40B67C2AA23CA90085D44F /* OpenSeaNFTsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40B67B2AA23CA90085D44F /* OpenSeaNFTsAppUITests.swift */; };
 		BB40B67E2AA23CA90085D44F /* OpenSeaNFTsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40B67D2AA23CA90085D44F /* OpenSeaNFTsAppUITestsLaunchTests.swift */; };
+		BB5E47682AA2403100CEEE5B /* NFTListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E47672AA2403100CEEE5B /* NFTListViewController.swift */; };
+		BB5E476D2AA2409B00CEEE5B /* NFTListVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E476C2AA2409B00CEEE5B /* NFTListVIewModel.swift */; };
 		D9FEC1378DFD7C6097E64291 /* Pods_OpenSeaNFTsAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8426980260DF3A6273CAFDC5 /* Pods_OpenSeaNFTsAppTests.framework */; };
 		DC7AB9C90FBB5FE6EFF063AD /* Pods_OpenSeaNFTsApp_OpenSeaNFTsAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914889DD45DA3EAEAFA2E8E8 /* Pods_OpenSeaNFTsApp_OpenSeaNFTsAppUITests.framework */; };
 		E8A6531CB639EE559ECBFAF5 /* Pods_OpenSeaNFTsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A4164073248712929C0469 /* Pods_OpenSeaNFTsApp.framework */; };
@@ -47,8 +47,6 @@
 		BB40B6572AA23CA80085D44F /* OpenSeaNFTsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenSeaNFTsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB40B65A2AA23CA80085D44F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB40B65C2AA23CA80085D44F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BB40B65E2AA23CA80085D44F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BB40B6612AA23CA80085D44F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BB40B6632AA23CA90085D44F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB40B6662AA23CA90085D44F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB40B6682AA23CA90085D44F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,6 +55,8 @@
 		BB40B6772AA23CA90085D44F /* OpenSeaNFTsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenSeaNFTsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB40B67B2AA23CA90085D44F /* OpenSeaNFTsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaNFTsAppUITests.swift; sourceTree = "<group>"; };
 		BB40B67D2AA23CA90085D44F /* OpenSeaNFTsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaNFTsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BB5E47672AA2403100CEEE5B /* NFTListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTListViewController.swift; sourceTree = "<group>"; };
+		BB5E476C2AA2409B00CEEE5B /* NFTListVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTListVIewModel.swift; sourceTree = "<group>"; };
 		C26E04D88BC10A0FDD7BAFBB /* Pods-OpenSeaNFTsAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSeaNFTsAppTests.release.xcconfig"; path = "Target Support Files/Pods-OpenSeaNFTsAppTests/Pods-OpenSeaNFTsAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		E3881972CE070AEEA21DBDB4 /* Pods-OpenSeaNFTsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSeaNFTsApp.debug.xcconfig"; path = "Target Support Files/Pods-OpenSeaNFTsApp/Pods-OpenSeaNFTsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		ED90CD749F1A204B09DE4083 /* Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests/Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -101,7 +101,6 @@
 				EE491E6B6459C57658AE6F6D /* Pods-OpenSeaNFTsAppTests.debug.xcconfig */,
 				C26E04D88BC10A0FDD7BAFBB /* Pods-OpenSeaNFTsAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -140,10 +139,9 @@
 		BB40B6592AA23CA80085D44F /* OpenSeaNFTsApp */ = {
 			isa = PBXGroup;
 			children = (
+				BB5E47692AA2407000CEEE5B /* UI */,
 				BB40B65A2AA23CA80085D44F /* AppDelegate.swift */,
 				BB40B65C2AA23CA80085D44F /* SceneDelegate.swift */,
-				BB40B65E2AA23CA80085D44F /* ViewController.swift */,
-				BB40B6602AA23CA80085D44F /* Main.storyboard */,
 				BB40B6632AA23CA90085D44F /* Assets.xcassets */,
 				BB40B6652AA23CA90085D44F /* LaunchScreen.storyboard */,
 				BB40B6682AA23CA90085D44F /* Info.plist */,
@@ -166,6 +164,31 @@
 				BB40B67D2AA23CA90085D44F /* OpenSeaNFTsAppUITestsLaunchTests.swift */,
 			);
 			path = OpenSeaNFTsAppUITests;
+			sourceTree = "<group>";
+		};
+		BB5E47692AA2407000CEEE5B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				BB5E476B2AA2408200CEEE5B /* ViewController */,
+				BB5E476A2AA2407A00CEEE5B /* ViewModel */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		BB5E476A2AA2407A00CEEE5B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BB5E476C2AA2409B00CEEE5B /* NFTListVIewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BB5E476B2AA2408200CEEE5B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BB5E47672AA2403100CEEE5B /* NFTListViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,7 +302,6 @@
 			files = (
 				BB40B6672AA23CA90085D44F /* LaunchScreen.storyboard in Resources */,
 				BB40B6642AA23CA90085D44F /* Assets.xcassets in Resources */,
-				BB40B6622AA23CA80085D44F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,8 +429,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB40B65F2AA23CA80085D44F /* ViewController.swift in Sources */,
 				BB40B65B2AA23CA80085D44F /* AppDelegate.swift in Sources */,
+				BB5E476D2AA2409B00CEEE5B /* NFTListVIewModel.swift in Sources */,
+				BB5E47682AA2403100CEEE5B /* NFTListViewController.swift in Sources */,
 				BB40B65D2AA23CA80085D44F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,14 +469,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		BB40B6602AA23CA80085D44F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BB40B6612AA23CA80085D44F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BB40B6652AA23CA90085D44F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -591,7 +606,6 @@
 				INFOPLIST_FILE = OpenSeaNFTsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -619,7 +633,6 @@
 				INFOPLIST_FILE = OpenSeaNFTsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
