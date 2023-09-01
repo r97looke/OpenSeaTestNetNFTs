@@ -50,10 +50,7 @@ class NFTDetailsViewController: UIViewController {
         permalinkButton.rx.tap.subscribe { [weak self] _ in
             guard let self = self else { return }
             
-            if UIApplication.shared.canOpenURL(model.permalink()) {
-                UIApplication.shared.open(model.permalink())
-            }
-            
+            self.openPermalink()
         }.disposed(by: disposeBag)
         
         view.addSubview(scrollView)
@@ -134,6 +131,12 @@ class NFTDetailsViewController: UIViewController {
             }
         }
         
+    }
+    
+    private func openPermalink() {
+        if UIApplication.shared.canOpenURL(model.permalink()) {
+            UIApplication.shared.open(model.permalink())
+        }
     }
 
 }
