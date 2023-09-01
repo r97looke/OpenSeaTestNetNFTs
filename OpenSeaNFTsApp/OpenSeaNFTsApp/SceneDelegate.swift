@@ -6,6 +6,33 @@
 //
 
 import UIKit
+import OpenSeaNFTs
+
+struct OpenSeaNFTsAppSettings {
+    
+    private static func chain() -> String {
+        return "goerli"
+    }
+    
+    private static func account() -> String {
+        return "0x85fD692D2a075908079261F5E351e7fE0267dB02"
+    }
+    
+    private static func endpointURL() -> URL {
+        return URL(string: "https://testnets-api.opensea.io/v2")!
+    }
+    
+    static func nftsEndpointURL() -> URL {
+        let queryItem = [URLQueryItem(name: "limit", value: "20")]
+        let url = endpointURL()
+        return url.appendingPathComponent("chain")
+            .appendingPathComponent(chain())
+            .appendingPathComponent("account")
+            .appendingPathComponent(account())
+            .appendingPathComponent("nfts")
+            .appending(queryItems: queryItem)
+    }
+}
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,7 +46,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
-        let viewModel = NFTListViewModel()
+        
+        let url = OpenSeaNFTsAppSettings.nftsEndpointURL()
+        let client = URLSessionHTTPClient()
+        let loader = RemoteNFTsLoader(url: url, client: client)
+        let viewModel = NFTListViewModel(loader: loader)
         let viewController = NFTListViewController(viewModel: viewModel)
         let navigationViewController = UINavigationController(rootViewController: viewController)
         window?.rootViewController = navigationViewController
