@@ -20,6 +20,30 @@ protocol NFTsLoader {
     func load(next: String?, completion: @escaping (LoadResult) -> Void)
 }
 
+struct RemoteNFTResponse: Codable {
+    let nfts: [RemoteNFTInfo]
+}
+
+struct RemoteNFTInfo: Codable {
+    let identifier: String
+    let collection: String
+    let contract: String
+    let name: String
+    let description: String
+    let image_url: String
+}
+
+private extension RemoteNFTInfo {
+    func toModel() -> NFTInfo {
+        return NFTInfo(identifier: identifier,
+                       collection: collection,
+                       contract: contract,
+                       name: name,
+                       description: description,
+                       image_url: image_url)
+    }
+}
+
 class RemoteNFTsLoader: NFTsLoader {
     typealias LoadResult = Swift.Result<[NFTInfo], Error>
     
@@ -39,13 +63,16 @@ class RemoteNFTsLoader: NFTsLoader {
     func load(next: String? = nil, completion: @escaping (LoadResult) -> Void) {
         client.get(from: url) { result in
             switch result {
-            case let .failure(error):
+            case .failure:
                 completion(.failure(LoadError.connectivity))
                 
             case let .success((data, httpURLResponse)):
-                completion(.failure(LoadError.invalidData))
-            default:
-                break
+                guard httpURLResponse.statusCode == 200, !data.isEmpty, let remoteNFTResponse = try? JSONDecoder().decode(RemoteNFTResponse.self, from: data) else {
+                    completion(.failure(LoadError.invalidData))
+                    return
+                }
+                
+                completion(.success(remoteNFTResponse.nfts.map{ $0.toModel() }))
             }
         }
     }
@@ -160,6 +187,30 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
         XCTAssertNotNil(receivedError)
     }
     
+    func test_load_deliversItemsOn200HTTPResponseWithValidData() {
+        let expectedNFTs = testNFTs()
+        let (client, sut) = makeSUT(anyURL())
+        
+        let exp = expectation(description: "Wait load to complete")
+        var receivedNFTs: [NFTInfo]?
+        sut.load { result in
+            switch result {
+            case let .success(nfts):
+                receivedNFTs = nfts
+                
+            default:
+                XCTFail("Expect error, got \(result) instead")
+            }
+            
+            exp.fulfill()
+        }
+        
+        client.completeWith(statusCode: 200, data: makeNFTsJSON(expectedNFTs))
+        
+        wait(for: [exp], timeout: 1.0)
+        XCTAssertEqual(receivedNFTs, expectedNFTs)
+    }
+    
     // MARK: Helpers
     private func makeSUT(_ url: URL) -> (client: HTTPClientSpy, sut: RemoteNFTsLoader) {
         let client = HTTPClientSpy()
@@ -192,5 +243,57 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
     private func anyNSError() -> NSError {
         return NSError(domain: "any error", code: -1)
     }
+    
+    private func testNFT() -> NFTInfo {
+        return NFTInfo(identifier: "id-1",
+                       collection: "collection-1",
+                       contract: "contract-1",
+                       name: "NFT-1",
+                       description: "NFT-1 description",
+                       image_url: "http://www.image1.com")
+    }
+    
+    private func testAnotherNFT() -> NFTInfo {
+        return NFTInfo(identifier: "id-2",
+                       collection: "collection-2",
+                       contract: "contract-2",
+                       name: "NFT-2",
+                       description: "NFT-2 description",
+                       image_url: "http://www.image2.com")
+    }
+    
+    private func testNFTs() -> [NFTInfo] {
+        return [testNFT(), testAnotherNFT()]
+    }
+    
+    private func makeNFTsJSON(_ nfts: [NFTInfo]) -> Data {
+        let remoteNFTs = nfts.map{ $0.toRemote() }
+        let remoteNFTsJSON = remoteNFTs.map { $0.json() }
+        let json = ["nfts" : remoteNFTsJSON]
+        return try! JSONSerialization.data(withJSONObject: json)
+    }
 
+}
+
+
+private extension NFTInfo {
+    func toRemote() -> RemoteNFTInfo {
+        return RemoteNFTInfo(identifier: identifier,
+                             collection: collection,
+                             contract: contract,
+                             name: name,
+                             description: description,
+                             image_url: image_url)
+    }
+}
+
+private extension RemoteNFTInfo {
+    func json() -> [String : Any] {
+        return ["identifier" : identifier,
+                "collection" : collection,
+                "contract" : contract,
+                "name" : name,
+                "description" : description,
+                "image_url" : image_url]
+    }
 }
