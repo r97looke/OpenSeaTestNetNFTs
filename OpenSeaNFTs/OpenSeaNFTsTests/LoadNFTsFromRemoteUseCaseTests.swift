@@ -8,14 +8,6 @@
 import XCTest
 import OpenSeaNFTs
 
-
-
-protocol NFTsLoader {
-    typealias LoadResult = Swift.Result<[NFTInfo], Error>
-    
-    func load(next: String?, completion: @escaping (LoadResult) -> Void)
-}
-
 struct RemoteNFTResponse: Codable {
     let nfts: [RemoteNFTInfo]
 }
