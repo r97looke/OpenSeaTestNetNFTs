@@ -35,6 +35,8 @@ final class NFTListViewController: UIViewController {
         super.loadView()
         title = viewModel.title
         
+        navigationItem.backButtonTitle = ""
+        
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = NFTInfoCell.DefaultSize
         layout.minimumLineSpacing = DefaultSpace
