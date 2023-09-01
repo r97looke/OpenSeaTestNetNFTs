@@ -8,53 +8,6 @@
 import XCTest
 import OpenSeaNFTs
 
-private extension RemoteNFTInfo {
-    func toModel() -> NFTInfo {
-        return NFTInfo(identifier: identifier,
-                       collection: collection,
-                       contract: contract,
-                       name: name,
-                       description: description,
-                       image_url: image_url)
-    }
-}
-
-class RemoteNFTsLoader: NFTsLoader {
-    typealias LoadResult = Swift.Result<[NFTInfo], Error>
-    
-    let url: URL
-    let client: HTTPClient
-    
-    init(url: URL, client: HTTPClient) {
-        self.url = url
-        self.client = client
-    }
-    
-    enum LoadError: Swift.Error {
-        case connectivity
-        case invalidData
-    }
-    
-    func load(next: String? = nil, completion: @escaping (LoadResult) -> Void) {
-        client.get(from: url) { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            case .failure:
-                completion(.failure(LoadError.connectivity))
-                
-            case let .success((data, httpURLResponse)):
-                guard httpURLResponse.statusCode == 200, !data.isEmpty, let remoteNFTResponse = try? JSONDecoder().decode(RemoteNFTResponse.self, from: data) else {
-                    completion(.failure(LoadError.invalidData))
-                    return
-                }
-                
-                completion(.success(remoteNFTResponse.nfts.map{ $0.toModel() }))
-            }
-        }
-    }
-}
-
 final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
 
     func test_init_doesNotRequestDataFromURL() {
