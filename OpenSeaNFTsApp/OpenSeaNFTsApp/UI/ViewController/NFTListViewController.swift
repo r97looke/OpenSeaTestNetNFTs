@@ -93,12 +93,22 @@ final class NFTListViewController: UIViewController {
                 self.viewModel.loadNextPageModels.accept(Void())
             }
         }.disposed(by: disposeBag)
+        collectionView.rx.modelSelected(NFTInfoModel.self).subscribe { [weak self] model in
+            guard let self = self else { return }
+            
+            self.showDetail(model)
+        }.disposed(by: disposeBag)
         
         refresh()
     }
     
     private func refresh() {
         viewModel.refreshModels.accept(Void())
+    }
+    
+    private func showDetail(_ model: NFTInfoModel) {
+        let detailVC = NFTDetailsViewController(model: model)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
