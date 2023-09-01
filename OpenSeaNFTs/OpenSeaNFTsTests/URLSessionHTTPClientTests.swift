@@ -22,6 +22,9 @@ class URLSessionHTTPClient: HTTPClient {
             if let clientError = error {
                 completion(.failure(clientError))
             }
+            else if let data = data, let httpURLResponse = response as? HTTPURLResponse {
+                completion(.success((data, httpURLResponse)))
+            }
             else {
                 completion(.failure(InvalidDataResponseErrorCombination()))
             }
@@ -97,6 +100,41 @@ final class URLSessionHTTPClientTests: XCTestCase {
         XCTAssertNotNil(resultError(sut, url: url, data: anyData(), response: nonHTTPURLResponse(url), error: nil))
         XCTAssertNotNil(resultError(sut, url: url, data: anyData(), response: nonHTTPURLResponse(url), error: anyNSError()))
         XCTAssertNotNil(resultError(sut, url: url, data: anyData(), response: anyHTTPURLResponse(url, statusCode: 200), error: anyNSError()))
+    }
+    
+    func test_getFromURL_succeedsOnHTTPResponseWithNilData() {
+        let url = anyURL()
+        let httpURLResponse = anyHTTPURLResponse(url, statusCode: 200)
+        let sut = makeSUT()
+        
+        let (receivedData, receivedResponse) = resultValues(sut, url: url, data: nil, response: httpURLResponse, error: nil)
+        let emptyData = Data()
+        XCTAssertEqual(receivedData, emptyData)
+        XCTAssertEqual(receivedResponse?.url, httpURLResponse.url)
+        XCTAssertEqual(receivedResponse?.statusCode, httpURLResponse.statusCode)
+    }
+    
+    private func resultValues(_ sut: URLSessionHTTPClient, url: URL, data: Data?, response: URLResponse?, error: Error?, file: StaticString = #filePath, line: UInt = #line) -> (Data?, HTTPURLResponse?) {
+        let exp = expectation(description: "Wait for complete")
+        
+        URLProtocolStub.stub(data: data, response: response, error: nil)
+        var receivedData: Data?
+        var receivedResponse: HTTPURLResponse?
+        sut.get(from: url) { result in
+            switch result {
+            case let .success((resultData, resultResponse)):
+                receivedData = resultData
+                receivedResponse = resultResponse
+                
+            default:
+                XCTFail("Expect success, got \(result) instead", file: file, line: line)
+            }
+            
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+        return (receivedData, receivedResponse)
     }
     
     // MARK: Helpers
