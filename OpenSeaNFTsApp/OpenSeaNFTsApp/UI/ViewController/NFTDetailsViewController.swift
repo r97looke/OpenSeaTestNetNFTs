@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 import SDWebImage
+import RxSwift
+import RxCocoa
 
 class NFTDetailsViewController: UIViewController {
     
@@ -15,7 +17,8 @@ class NFTDetailsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let model: NFTInfoModel
+    private let model: NFTInfoModel
+    private let disposeBag = DisposeBag()
     
     init(model: NFTInfoModel) {
         self.model = model
@@ -31,6 +34,8 @@ class NFTDetailsViewController: UIViewController {
     let nameLabel = UILabel()
     let descriptionLabel = UILabel()
     
+    let permalinkButton = UIButton(type: .roundedRect)
+    
     override func loadView() {
         super.loadView()
         
@@ -38,10 +43,32 @@ class NFTDetailsViewController: UIViewController {
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.isDirectionalLockEnabled = true
+        
+        permalinkButton.translatesAutoresizingMaskIntoConstraints = false
+        permalinkButton.setTitle("permalink", for: .normal)
+        permalinkButton.setTitleColor(.blue, for: .normal)
+        permalinkButton.rx.tap.subscribe { [weak self] _ in
+            guard let self = self else { return }
+            
+            if UIApplication.shared.canOpenURL(model.permalink()) {
+                UIApplication.shared.open(model.permalink())
+            }
+            
+        }.disposed(by: disposeBag)
+        
         view.addSubview(scrollView)
+        view.addSubview(permalinkButton)
+        
         scrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.leading.trailing.equalToSuperview()
             make.width.equalToSuperview()
+        }
+        
+        permalinkButton.snp.makeConstraints { make in
+            make.top.equalTo(scrollView.snp.bottom).offset(DefaultSpace)
+            make.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading).offset(DefaultMargin)
+            make.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing).offset(-DefaultMargin)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-DefaultMargin)
         }
         
         vStack.translatesAutoresizingMaskIntoConstraints = false
@@ -109,4 +136,11 @@ class NFTDetailsViewController: UIViewController {
         
     }
 
+}
+
+//
+private extension NFTInfoModel {
+    func permalink() -> URL {
+        return URL(string: "https://testnets.opensea.io/assets/goerli/\(contract)/\(identifier)")!
+    }
 }
