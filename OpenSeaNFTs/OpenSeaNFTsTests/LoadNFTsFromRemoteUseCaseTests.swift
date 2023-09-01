@@ -113,12 +113,6 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    private func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, "Instance should be deallocated. There may be a memory leak.", file: file, line: line)
-        }
-    }
-    
     private class HTTPClientSpy: HTTPClient {
         var requestURLs = [URL]()
         var completions = [(GETResult) -> Void]()
@@ -135,14 +129,6 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
         func completeWith(statusCode: Int, data: Data, at index: Int = 0) {
             completions[index](.success((data, HTTPURLResponse(url: requestURLs[index], statusCode: statusCode, httpVersion: nil, headerFields: nil)!)))
         }
-    }
-    
-    private func anyURL() -> URL {
-        return URL(string: "http://www.any-url.com")!
-    }
-    
-    private func anyNSError() -> NSError {
-        return NSError(domain: "any error", code: -1)
     }
     
     private func testNFT() -> NFTInfo {
