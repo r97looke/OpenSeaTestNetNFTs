@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		BB04B4322AA1CBFC0013D816 /* OpenSeaNFTs.docc in Sources */ = {isa = PBXBuildFile; fileRef = BB04B4312AA1CBFC0013D816 /* OpenSeaNFTs.docc */; };
 		BB04B4382AA1CBFC0013D816 /* OpenSeaNFTs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB04B42D2AA1CBFC0013D816 /* OpenSeaNFTs.framework */; };
-		BB04B43D2AA1CBFC0013D816 /* OpenSeaNFTsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB04B43C2AA1CBFC0013D816 /* OpenSeaNFTsTests.swift */; };
 		BB04B43E2AA1CBFC0013D816 /* OpenSeaNFTs.h in Headers */ = {isa = PBXBuildFile; fileRef = BB04B4302AA1CBFC0013D816 /* OpenSeaNFTs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BB04B4482AA1CC810013D816 /* NFTInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB04B4472AA1CC810013D816 /* NFTInfo.swift */; };
+		BB04B44A2AA1CD1A0013D816 /* LoadNFTsFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB04B4492AA1CD1A0013D816 /* LoadNFTsFromRemoteUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +29,8 @@
 		BB04B4302AA1CBFC0013D816 /* OpenSeaNFTs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenSeaNFTs.h; sourceTree = "<group>"; };
 		BB04B4312AA1CBFC0013D816 /* OpenSeaNFTs.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = OpenSeaNFTs.docc; sourceTree = "<group>"; };
 		BB04B4372AA1CBFC0013D816 /* OpenSeaNFTsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenSeaNFTsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB04B43C2AA1CBFC0013D816 /* OpenSeaNFTsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaNFTsTests.swift; sourceTree = "<group>"; };
+		BB04B4472AA1CC810013D816 /* NFTInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTInfo.swift; sourceTree = "<group>"; };
+		BB04B4492AA1CD1A0013D816 /* LoadNFTsFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadNFTsFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				BB04B4302AA1CBFC0013D816 /* OpenSeaNFTs.h */,
 				BB04B4312AA1CBFC0013D816 /* OpenSeaNFTs.docc */,
+				BB04B4472AA1CC810013D816 /* NFTInfo.swift */,
 			);
 			path = OpenSeaNFTs;
 			sourceTree = "<group>";
@@ -80,7 +83,7 @@
 		BB04B43B2AA1CBFC0013D816 /* OpenSeaNFTsTests */ = {
 			isa = PBXGroup;
 			children = (
-				BB04B43C2AA1CBFC0013D816 /* OpenSeaNFTsTests.swift */,
+				BB04B4492AA1CD1A0013D816 /* LoadNFTsFromRemoteUseCaseTests.swift */,
 			);
 			path = OpenSeaNFTsTests;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 					};
 					BB04B4362AA1CBFC0013D816 = {
 						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -194,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB04B4482AA1CC810013D816 /* NFTInfo.swift in Sources */,
 				BB04B4322AA1CBFC0013D816 /* OpenSeaNFTs.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,7 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB04B43D2AA1CBFC0013D816 /* OpenSeaNFTsTests.swift in Sources */,
+				BB04B44A2AA1CD1A0013D816 /* LoadNFTsFromRemoteUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +404,8 @@
 		BB04B4452AA1CBFC0013D816 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -406,6 +413,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.slchen.OpenSeaNFTsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -413,6 +421,8 @@
 		BB04B4462AA1CBFC0013D816 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
