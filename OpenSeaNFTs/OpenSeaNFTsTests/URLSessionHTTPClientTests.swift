@@ -19,7 +19,12 @@ class URLSessionHTTPClient: HTTPClient {
     
     func get(from url: URL, completion: @escaping (GETResult) -> Void) {
         session.dataTask(with: URLRequest(url: url)) { data, response, error in
-            completion(.failure(InvalidDataResponseErrorCombination()))
+            if let clientError = error {
+                completion(.failure(clientError))
+            }
+            else {
+                completion(.failure(InvalidDataResponseErrorCombination()))
+            }
         }.resume()
     }
 }
@@ -51,6 +56,30 @@ final class URLSessionHTTPClientTests: XCTestCase {
         }
         
         sut.get(from: url) { _ in }
+        
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    func test_getFromURL_failsOnRequestError() {
+        let url = anyURL()
+        let error = anyNSError()
+        let sut = makeSUT()
+        let exp = expectation(description: "Wait for complete")
+        
+        URLProtocolStub.stub(data: nil, response: nil, error: error)
+        
+        sut.get(from: url) { result in
+            switch result {
+            case let .failure(receivedError as NSError):
+                XCTAssertEqual(receivedError.domain, error.domain)
+                XCTAssertEqual(receivedError.code, error.code)
+                
+            default:
+                XCTFail("Expect error, got \(result) instead")
+            }
+            
+            exp.fulfill()
+        }
         
         wait(for: [exp], timeout: 1.0)
     }
