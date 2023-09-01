@@ -16,6 +16,9 @@
 		BB40B6722AA23CA90085D44F /* OpenSeaNFTsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40B6712AA23CA90085D44F /* OpenSeaNFTsAppTests.swift */; };
 		BB40B67C2AA23CA90085D44F /* OpenSeaNFTsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40B67B2AA23CA90085D44F /* OpenSeaNFTsAppUITests.swift */; };
 		BB40B67E2AA23CA90085D44F /* OpenSeaNFTsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40B67D2AA23CA90085D44F /* OpenSeaNFTsAppUITestsLaunchTests.swift */; };
+		D9FEC1378DFD7C6097E64291 /* Pods_OpenSeaNFTsAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8426980260DF3A6273CAFDC5 /* Pods_OpenSeaNFTsAppTests.framework */; };
+		DC7AB9C90FBB5FE6EFF063AD /* Pods_OpenSeaNFTsApp_OpenSeaNFTsAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914889DD45DA3EAEAFA2E8E8 /* Pods_OpenSeaNFTsApp_OpenSeaNFTsAppUITests.framework */; };
+		E8A6531CB639EE559ECBFAF5 /* Pods_OpenSeaNFTsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A4164073248712929C0469 /* Pods_OpenSeaNFTsApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06A4164073248712929C0469 /* Pods_OpenSeaNFTsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenSeaNFTsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E61A9C9C90D0F5DEA0516C7 /* Pods-OpenSeaNFTsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSeaNFTsApp.release.xcconfig"; path = "Target Support Files/Pods-OpenSeaNFTsApp/Pods-OpenSeaNFTsApp.release.xcconfig"; sourceTree = "<group>"; };
+		8426980260DF3A6273CAFDC5 /* Pods_OpenSeaNFTsAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenSeaNFTsAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		914889DD45DA3EAEAFA2E8E8 /* Pods_OpenSeaNFTsApp_OpenSeaNFTsAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenSeaNFTsApp_OpenSeaNFTsAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B540B033FE2773F7E91D897F /* Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests.release.xcconfig"; path = "Target Support Files/Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests/Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BB40B6572AA23CA80085D44F /* OpenSeaNFTsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenSeaNFTsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB40B65A2AA23CA80085D44F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB40B65C2AA23CA80085D44F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +57,10 @@
 		BB40B6772AA23CA90085D44F /* OpenSeaNFTsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenSeaNFTsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB40B67B2AA23CA90085D44F /* OpenSeaNFTsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaNFTsAppUITests.swift; sourceTree = "<group>"; };
 		BB40B67D2AA23CA90085D44F /* OpenSeaNFTsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaNFTsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C26E04D88BC10A0FDD7BAFBB /* Pods-OpenSeaNFTsAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSeaNFTsAppTests.release.xcconfig"; path = "Target Support Files/Pods-OpenSeaNFTsAppTests/Pods-OpenSeaNFTsAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		E3881972CE070AEEA21DBDB4 /* Pods-OpenSeaNFTsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSeaNFTsApp.debug.xcconfig"; path = "Target Support Files/Pods-OpenSeaNFTsApp/Pods-OpenSeaNFTsApp.debug.xcconfig"; sourceTree = "<group>"; };
+		ED90CD749F1A204B09DE4083 /* Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests/Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		EE491E6B6459C57658AE6F6D /* Pods-OpenSeaNFTsAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSeaNFTsAppTests.debug.xcconfig"; path = "Target Support Files/Pods-OpenSeaNFTsAppTests/Pods-OpenSeaNFTsAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8A6531CB639EE559ECBFAF5 /* Pods_OpenSeaNFTsApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9FEC1378DFD7C6097E64291 /* Pods_OpenSeaNFTsAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +84,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC7AB9C90FBB5FE6EFF063AD /* Pods_OpenSeaNFTsApp_OpenSeaNFTsAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03DFF622AD5CFA30ACF2B979 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E3881972CE070AEEA21DBDB4 /* Pods-OpenSeaNFTsApp.debug.xcconfig */,
+				3E61A9C9C90D0F5DEA0516C7 /* Pods-OpenSeaNFTsApp.release.xcconfig */,
+				ED90CD749F1A204B09DE4083 /* Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests.debug.xcconfig */,
+				B540B033FE2773F7E91D897F /* Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests.release.xcconfig */,
+				EE491E6B6459C57658AE6F6D /* Pods-OpenSeaNFTsAppTests.debug.xcconfig */,
+				C26E04D88BC10A0FDD7BAFBB /* Pods-OpenSeaNFTsAppTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		36B5C30E943074809D72DB06 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06A4164073248712929C0469 /* Pods_OpenSeaNFTsApp.framework */,
+				914889DD45DA3EAEAFA2E8E8 /* Pods_OpenSeaNFTsApp_OpenSeaNFTsAppUITests.framework */,
+				8426980260DF3A6273CAFDC5 /* Pods_OpenSeaNFTsAppTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BB40B64E2AA23CA80085D44F = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +122,8 @@
 				BB40B6702AA23CA90085D44F /* OpenSeaNFTsAppTests */,
 				BB40B67A2AA23CA90085D44F /* OpenSeaNFTsAppUITests */,
 				BB40B6582AA23CA80085D44F /* Products */,
+				03DFF622AD5CFA30ACF2B979 /* Pods */,
+				36B5C30E943074809D72DB06 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,9 +175,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB40B6812AA23CA90085D44F /* Build configuration list for PBXNativeTarget "OpenSeaNFTsApp" */;
 			buildPhases = (
+				FAEBAA21CB5DD476CE904931 /* [CP] Check Pods Manifest.lock */,
 				BB40B6532AA23CA80085D44F /* Sources */,
 				BB40B6542AA23CA80085D44F /* Frameworks */,
 				BB40B6552AA23CA80085D44F /* Resources */,
+				EBBF2D6246CCC20E41CA1EC6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,6 +194,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB40B6842AA23CA90085D44F /* Build configuration list for PBXNativeTarget "OpenSeaNFTsAppTests" */;
 			buildPhases = (
+				588840EE0EEE20BF256562A0 /* [CP] Check Pods Manifest.lock */,
 				BB40B6692AA23CA90085D44F /* Sources */,
 				BB40B66A2AA23CA90085D44F /* Frameworks */,
 				BB40B66B2AA23CA90085D44F /* Resources */,
@@ -169,9 +213,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB40B6872AA23CA90085D44F /* Build configuration list for PBXNativeTarget "OpenSeaNFTsAppUITests" */;
 			buildPhases = (
+				36C4D778EC09AF5CA1A1D9BC /* [CP] Check Pods Manifest.lock */,
 				BB40B6732AA23CA90085D44F /* Sources */,
 				BB40B6742AA23CA90085D44F /* Frameworks */,
 				BB40B6752AA23CA90085D44F /* Resources */,
+				289FB387D9D0C916AD2F26B2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -252,6 +298,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		289FB387D9D0C916AD2F26B2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests/Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests/Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests/Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		36C4D778EC09AF5CA1A1D9BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		588840EE0EEE20BF256562A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OpenSeaNFTsAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EBBF2D6246CCC20E41CA1EC6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OpenSeaNFTsApp/Pods-OpenSeaNFTsApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OpenSeaNFTsApp/Pods-OpenSeaNFTsApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OpenSeaNFTsApp/Pods-OpenSeaNFTsApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FAEBAA21CB5DD476CE904931 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OpenSeaNFTsApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BB40B6532AA23CA80085D44F /* Sources */ = {
@@ -432,6 +581,7 @@
 		};
 		BB40B6822AA23CA90085D44F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3881972CE070AEEA21DBDB4 /* Pods-OpenSeaNFTsApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -459,6 +609,7 @@
 		};
 		BB40B6832AA23CA90085D44F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E61A9C9C90D0F5DEA0516C7 /* Pods-OpenSeaNFTsApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -486,6 +637,7 @@
 		};
 		BB40B6852AA23CA90085D44F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE491E6B6459C57658AE6F6D /* Pods-OpenSeaNFTsAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -505,6 +657,7 @@
 		};
 		BB40B6862AA23CA90085D44F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C26E04D88BC10A0FDD7BAFBB /* Pods-OpenSeaNFTsAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -524,6 +677,7 @@
 		};
 		BB40B6882AA23CA90085D44F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED90CD749F1A204B09DE4083 /* Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -541,6 +695,7 @@
 		};
 		BB40B6892AA23CA90085D44F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B540B033FE2773F7E91D897F /* Pods-OpenSeaNFTsApp-OpenSeaNFTsAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

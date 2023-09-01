@@ -1,0 +1,6 @@
+framework module Pods_OpenSeaNFTsAppTests {
+  umbrella header "Pods-OpenSeaNFTsAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
