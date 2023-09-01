@@ -35,7 +35,7 @@ public class RemoteNFTsLoader: NFTsLoader {
                     return
                 }
                 
-                completion(.success(remoteNFTResponse.nfts.map{ $0.toModel() }))
+                completion(.success((remoteNFTResponse.nfts.map{ $0.toModel() }, remoteNFTResponse.next)))
             }
         }
     }

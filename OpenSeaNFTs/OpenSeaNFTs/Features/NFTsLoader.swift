@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol NFTsLoader {
-    typealias LoadResult = Swift.Result<[NFTInfo], Error>
+    typealias LoadResult = Swift.Result<([NFTInfo], String?), Error>
     
     func load(next: String?, completion: @escaping (LoadResult) -> Void)
 }

@@ -19,8 +19,9 @@ final class OpenSeaNFTsRemoteIntegrationsTests: XCTestCase {
         let exp = expectation(description: "Wait loader to complete")
         loader.load { result in
             switch result {
-            case let .success(nfts):
+            case let .success((nfts, next)):
                 XCTAssertEqual(nfts.count, 20)
+                XCTAssertNotNil(next)
                 
             default:
                 XCTFail("Expect success, got \(result) instead")
