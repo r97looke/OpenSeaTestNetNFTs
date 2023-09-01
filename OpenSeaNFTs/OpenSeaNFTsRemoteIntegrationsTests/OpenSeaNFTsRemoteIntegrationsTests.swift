@@ -47,7 +47,7 @@ final class OpenSeaNFTsRemoteIntegrationsTests: XCTestCase {
     
     private func testEndpointURL() -> URL {
         let queryItem = [URLQueryItem(name: "limit", value: "20")]
-        var url = testBaseEndpointURL()
+        let url = testBaseEndpointURL()
         return url.appendingPathComponent("chain")
             .appendingPathComponent(chain())
             .appendingPathComponent("account")

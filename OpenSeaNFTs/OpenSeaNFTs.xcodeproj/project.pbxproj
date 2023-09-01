@@ -61,6 +61,7 @@
 		BB9CBABD2AA2350300B53981 /* OpenSeaNFTs.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = OpenSeaNFTs.xctestplan; sourceTree = "<group>"; };
 		BB9CBAC22AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenSeaNFTsRemoteIntegrationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9CBAC42AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaNFTsRemoteIntegrationsTests.swift; sourceTree = "<group>"; };
+		BB9CBACC2AA239C700B53981 /* OpenSeaNFTsRemoteIntegration.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = OpenSeaNFTsRemoteIntegration.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +158,7 @@
 		BB9CBAC32AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests */ = {
 			isa = PBXGroup;
 			children = (
+				BB9CBACC2AA239C700B53981 /* OpenSeaNFTsRemoteIntegration.xctestplan */,
 				BB9CBAC42AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.swift */,
 			);
 			path = OpenSeaNFTsRemoteIntegrationsTests;
