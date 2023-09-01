@@ -12,14 +12,16 @@ protocol HTTPClient {
 }
 
 class RemoteNFTsLoader {
-    let httpClient: HTTPClient
+    let url: URL
+    let client: HTTPClient
     
-    init(httpClient: HTTPClient) {
-        self.httpClient = httpClient
+    init(url: URL, client: HTTPClient) {
+        self.url = url
+        self.client = client
     }
     
-    func load(next: String?) {
-        
+    func load(next: String? = nil) {
+        client.get(from: url)
     }
 }
 
@@ -27,9 +29,19 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
 
     func test_init_doesNotRequestDataFromURL() {
         let client = HTTPClientSpy()
-        let sut = RemoteNFTsLoader(httpClient: client)
+        let sut = RemoteNFTsLoader(url: anyURL(), client: client)
         
         XCTAssertEqual(client.requestURLs, [])
+    }
+    
+    func test_load_doesRequestsDataFromURL() {
+        let url = anyURL()
+        let client = HTTPClientSpy()
+        let sut = RemoteNFTsLoader(url: url, client: client)
+        
+        sut.load()
+        
+        XCTAssertEqual(client.requestURLs, [url])
     }
     
     // MARK: Helpers
@@ -37,8 +49,12 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
         var requestURLs = [URL]()
         
         func get(from url: URL) {
-            
+            requestURLs.append(url)
         }
+    }
+    
+    private func anyURL() -> URL {
+        return URL(string: "http://www.any-url.com")!
     }
 
 }
