@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 final class NFTListViewController: UIViewController {
     
@@ -15,6 +17,7 @@ final class NFTListViewController: UIViewController {
     }
     
     private let viewModel: NFTListViewModel
+    private let disposeBag = DisposeBag()
     
     init(viewModel: NFTListViewModel) {
         self.viewModel = viewModel
@@ -23,8 +26,10 @@ final class NFTListViewController: UIViewController {
     
     private let DefaultMargin: CGFloat = 16.0
     private let DefaultSpace: CGFloat = 8.0
-    private let refreshView = UIActivityIndicatorView(style: .large)
+    
     private var collectionView: UICollectionView!
+    private let refreshView = UIActivityIndicatorView(style: .large)
+    private let loadingView = UIActivityIndicatorView(style: .large)
     
     override func loadView() {
         super.loadView()
@@ -48,52 +53,45 @@ final class NFTListViewController: UIViewController {
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-DefaultMargin)
             make.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing).offset(-DefaultMargin)
         }
+        
+        refreshView.translatesAutoresizingMaskIntoConstraints = false
+        refreshView.color = .brown
+        view.addSubview(refreshView)
+        refreshView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+        loadingView.color = .blue
+        view.addSubview(loadingView)
+        loadingView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-DefaultMargin)
+            make.centerX.equalToSuperview()
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        collectionView.register(NFTInfoCell.self, forCellWithReuseIdentifier: "\(type(of: NFTInfoCell.self))")
-        collectionView.dataSource = self
+        
+        viewModel.isRefreshing.bind(to: refreshView.rx.isAnimating).disposed(by: disposeBag)
+        viewModel.isNextLoading.bind(to: loadingView.rx.isAnimating).disposed(by: disposeBag)
+        
         collectionView.delegate = self
+        collectionView.register(NFTInfoCell.self, forCellWithReuseIdentifier: "\(type(of: NFTInfoCell.self))")
+        viewModel.displayModels.bind(to: collectionView.rx.items(cellIdentifier: "\(type(of: NFTInfoCell.self))", cellType: NFTInfoCell.self)) { (item, model, cell) in
+            cell.model = model
+        }.disposed(by: disposeBag)
+        collectionView.rx.observe(CGRect.self, "bounds").subscribe { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        }.disposed(by: disposeBag)
         
         refresh()
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        NSLog("TODO: viewWillTransition size = \(size)")
-        coordinator.animate { _ in
-            self.collectionView.collectionViewLayout.invalidateLayout()
-        }
-    }
-    
     private func refresh() {
-        viewModel.refresh { [weak self] in
-            guard let self = self else { return }
-            
-            self.collectionView.reloadData()
-        }
-        collectionView.reloadData()
-    }
-
-}
-
-// MARK: Helpers
-extension NFTListViewController: UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.models.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let model = viewModel.models[indexPath.item]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(type(of: NFTInfoCell.self))", for: indexPath) as! NFTInfoCell
-        cell.model = model
-        return cell
+        viewModel.refreshModels.accept(Void())
     }
 }
 
@@ -103,7 +101,6 @@ extension NFTListViewController: UICollectionViewDelegate, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let collectionWidth = collectionView.bounds.size.width
         let cellWidth = floor((collectionWidth - DefaultSpace)/2.0)
-        NSLog("TODO: sizeForItemAt \(indexPath) size = \(CGSize(width: cellWidth, height: NFTInfoCell.DefaultSize.height))")
         return CGSize(width: cellWidth, height: NFTInfoCell.DefaultSize.height)
     }
 }
