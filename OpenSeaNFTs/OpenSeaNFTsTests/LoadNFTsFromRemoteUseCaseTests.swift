@@ -14,7 +14,13 @@ protocol HTTPClient {
     func get(from url: URL, completion: @escaping (GETResult) -> Void)
 }
 
-class RemoteNFTsLoader {
+protocol NFTsLoader {
+    typealias LoadResult = Swift.Result<[NFTInfo], Error>
+    
+    func load(next: String?, completion: @escaping (LoadResult) -> Void)
+}
+
+class RemoteNFTsLoader: NFTsLoader {
     typealias LoadResult = Swift.Result<[NFTInfo], Error>
     
     let url: URL
