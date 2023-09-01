@@ -1,0 +1,601 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BB40B65B2AA23CA80085D44F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40B65A2AA23CA80085D44F /* AppDelegate.swift */; };
+		BB40B65D2AA23CA80085D44F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40B65C2AA23CA80085D44F /* SceneDelegate.swift */; };
+		BB40B65F2AA23CA80085D44F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40B65E2AA23CA80085D44F /* ViewController.swift */; };
+		BB40B6622AA23CA80085D44F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB40B6602AA23CA80085D44F /* Main.storyboard */; };
+		BB40B6642AA23CA90085D44F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB40B6632AA23CA90085D44F /* Assets.xcassets */; };
+		BB40B6672AA23CA90085D44F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB40B6652AA23CA90085D44F /* LaunchScreen.storyboard */; };
+		BB40B6722AA23CA90085D44F /* OpenSeaNFTsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40B6712AA23CA90085D44F /* OpenSeaNFTsAppTests.swift */; };
+		BB40B67C2AA23CA90085D44F /* OpenSeaNFTsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40B67B2AA23CA90085D44F /* OpenSeaNFTsAppUITests.swift */; };
+		BB40B67E2AA23CA90085D44F /* OpenSeaNFTsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40B67D2AA23CA90085D44F /* OpenSeaNFTsAppUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BB40B66E2AA23CA90085D44F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB40B64F2AA23CA80085D44F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB40B6562AA23CA80085D44F;
+			remoteInfo = OpenSeaNFTsApp;
+		};
+		BB40B6782AA23CA90085D44F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB40B64F2AA23CA80085D44F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB40B6562AA23CA80085D44F;
+			remoteInfo = OpenSeaNFTsApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BB40B6572AA23CA80085D44F /* OpenSeaNFTsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenSeaNFTsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB40B65A2AA23CA80085D44F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BB40B65C2AA23CA80085D44F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BB40B65E2AA23CA80085D44F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BB40B6612AA23CA80085D44F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BB40B6632AA23CA90085D44F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BB40B6662AA23CA90085D44F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BB40B6682AA23CA90085D44F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB40B66D2AA23CA90085D44F /* OpenSeaNFTsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenSeaNFTsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB40B6712AA23CA90085D44F /* OpenSeaNFTsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaNFTsAppTests.swift; sourceTree = "<group>"; };
+		BB40B6772AA23CA90085D44F /* OpenSeaNFTsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenSeaNFTsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB40B67B2AA23CA90085D44F /* OpenSeaNFTsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaNFTsAppUITests.swift; sourceTree = "<group>"; };
+		BB40B67D2AA23CA90085D44F /* OpenSeaNFTsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaNFTsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BB40B6542AA23CA80085D44F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB40B66A2AA23CA90085D44F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB40B6742AA23CA90085D44F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BB40B64E2AA23CA80085D44F = {
+			isa = PBXGroup;
+			children = (
+				BB40B6592AA23CA80085D44F /* OpenSeaNFTsApp */,
+				BB40B6702AA23CA90085D44F /* OpenSeaNFTsAppTests */,
+				BB40B67A2AA23CA90085D44F /* OpenSeaNFTsAppUITests */,
+				BB40B6582AA23CA80085D44F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BB40B6582AA23CA80085D44F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BB40B6572AA23CA80085D44F /* OpenSeaNFTsApp.app */,
+				BB40B66D2AA23CA90085D44F /* OpenSeaNFTsAppTests.xctest */,
+				BB40B6772AA23CA90085D44F /* OpenSeaNFTsAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BB40B6592AA23CA80085D44F /* OpenSeaNFTsApp */ = {
+			isa = PBXGroup;
+			children = (
+				BB40B65A2AA23CA80085D44F /* AppDelegate.swift */,
+				BB40B65C2AA23CA80085D44F /* SceneDelegate.swift */,
+				BB40B65E2AA23CA80085D44F /* ViewController.swift */,
+				BB40B6602AA23CA80085D44F /* Main.storyboard */,
+				BB40B6632AA23CA90085D44F /* Assets.xcassets */,
+				BB40B6652AA23CA90085D44F /* LaunchScreen.storyboard */,
+				BB40B6682AA23CA90085D44F /* Info.plist */,
+			);
+			path = OpenSeaNFTsApp;
+			sourceTree = "<group>";
+		};
+		BB40B6702AA23CA90085D44F /* OpenSeaNFTsAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				BB40B6712AA23CA90085D44F /* OpenSeaNFTsAppTests.swift */,
+			);
+			path = OpenSeaNFTsAppTests;
+			sourceTree = "<group>";
+		};
+		BB40B67A2AA23CA90085D44F /* OpenSeaNFTsAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BB40B67B2AA23CA90085D44F /* OpenSeaNFTsAppUITests.swift */,
+				BB40B67D2AA23CA90085D44F /* OpenSeaNFTsAppUITestsLaunchTests.swift */,
+			);
+			path = OpenSeaNFTsAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BB40B6562AA23CA80085D44F /* OpenSeaNFTsApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB40B6812AA23CA90085D44F /* Build configuration list for PBXNativeTarget "OpenSeaNFTsApp" */;
+			buildPhases = (
+				BB40B6532AA23CA80085D44F /* Sources */,
+				BB40B6542AA23CA80085D44F /* Frameworks */,
+				BB40B6552AA23CA80085D44F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OpenSeaNFTsApp;
+			productName = OpenSeaNFTsApp;
+			productReference = BB40B6572AA23CA80085D44F /* OpenSeaNFTsApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BB40B66C2AA23CA90085D44F /* OpenSeaNFTsAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB40B6842AA23CA90085D44F /* Build configuration list for PBXNativeTarget "OpenSeaNFTsAppTests" */;
+			buildPhases = (
+				BB40B6692AA23CA90085D44F /* Sources */,
+				BB40B66A2AA23CA90085D44F /* Frameworks */,
+				BB40B66B2AA23CA90085D44F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB40B66F2AA23CA90085D44F /* PBXTargetDependency */,
+			);
+			name = OpenSeaNFTsAppTests;
+			productName = OpenSeaNFTsAppTests;
+			productReference = BB40B66D2AA23CA90085D44F /* OpenSeaNFTsAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BB40B6762AA23CA90085D44F /* OpenSeaNFTsAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB40B6872AA23CA90085D44F /* Build configuration list for PBXNativeTarget "OpenSeaNFTsAppUITests" */;
+			buildPhases = (
+				BB40B6732AA23CA90085D44F /* Sources */,
+				BB40B6742AA23CA90085D44F /* Frameworks */,
+				BB40B6752AA23CA90085D44F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB40B6792AA23CA90085D44F /* PBXTargetDependency */,
+			);
+			name = OpenSeaNFTsAppUITests;
+			productName = OpenSeaNFTsAppUITests;
+			productReference = BB40B6772AA23CA90085D44F /* OpenSeaNFTsAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BB40B64F2AA23CA80085D44F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					BB40B6562AA23CA80085D44F = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					BB40B66C2AA23CA90085D44F = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = BB40B6562AA23CA80085D44F;
+					};
+					BB40B6762AA23CA90085D44F = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = BB40B6562AA23CA80085D44F;
+					};
+				};
+			};
+			buildConfigurationList = BB40B6522AA23CA80085D44F /* Build configuration list for PBXProject "OpenSeaNFTsApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BB40B64E2AA23CA80085D44F;
+			productRefGroup = BB40B6582AA23CA80085D44F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BB40B6562AA23CA80085D44F /* OpenSeaNFTsApp */,
+				BB40B66C2AA23CA90085D44F /* OpenSeaNFTsAppTests */,
+				BB40B6762AA23CA90085D44F /* OpenSeaNFTsAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BB40B6552AA23CA80085D44F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB40B6672AA23CA90085D44F /* LaunchScreen.storyboard in Resources */,
+				BB40B6642AA23CA90085D44F /* Assets.xcassets in Resources */,
+				BB40B6622AA23CA80085D44F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB40B66B2AA23CA90085D44F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB40B6752AA23CA90085D44F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BB40B6532AA23CA80085D44F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB40B65F2AA23CA80085D44F /* ViewController.swift in Sources */,
+				BB40B65B2AA23CA80085D44F /* AppDelegate.swift in Sources */,
+				BB40B65D2AA23CA80085D44F /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB40B6692AA23CA90085D44F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB40B6722AA23CA90085D44F /* OpenSeaNFTsAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB40B6732AA23CA90085D44F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB40B67C2AA23CA90085D44F /* OpenSeaNFTsAppUITests.swift in Sources */,
+				BB40B67E2AA23CA90085D44F /* OpenSeaNFTsAppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BB40B66F2AA23CA90085D44F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB40B6562AA23CA80085D44F /* OpenSeaNFTsApp */;
+			targetProxy = BB40B66E2AA23CA90085D44F /* PBXContainerItemProxy */;
+		};
+		BB40B6792AA23CA90085D44F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB40B6562AA23CA80085D44F /* OpenSeaNFTsApp */;
+			targetProxy = BB40B6782AA23CA90085D44F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BB40B6602AA23CA80085D44F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB40B6612AA23CA80085D44F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BB40B6652AA23CA90085D44F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB40B6662AA23CA90085D44F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BB40B67F2AA23CA90085D44F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BB40B6802AA23CA90085D44F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BB40B6822AA23CA90085D44F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OpenSeaNFTsApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.slchen.OpenSeaNFTsApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BB40B6832AA23CA90085D44F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OpenSeaNFTsApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.slchen.OpenSeaNFTsApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BB40B6852AA23CA90085D44F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.slchen.OpenSeaNFTsAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenSeaNFTsApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OpenSeaNFTsApp";
+			};
+			name = Debug;
+		};
+		BB40B6862AA23CA90085D44F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.slchen.OpenSeaNFTsAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenSeaNFTsApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OpenSeaNFTsApp";
+			};
+			name = Release;
+		};
+		BB40B6882AA23CA90085D44F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.slchen.OpenSeaNFTsAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OpenSeaNFTsApp;
+			};
+			name = Debug;
+		};
+		BB40B6892AA23CA90085D44F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.slchen.OpenSeaNFTsAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OpenSeaNFTsApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BB40B6522AA23CA80085D44F /* Build configuration list for PBXProject "OpenSeaNFTsApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB40B67F2AA23CA90085D44F /* Debug */,
+				BB40B6802AA23CA90085D44F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB40B6812AA23CA90085D44F /* Build configuration list for PBXNativeTarget "OpenSeaNFTsApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB40B6822AA23CA90085D44F /* Debug */,
+				BB40B6832AA23CA90085D44F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB40B6842AA23CA90085D44F /* Build configuration list for PBXNativeTarget "OpenSeaNFTsAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB40B6852AA23CA90085D44F /* Debug */,
+				BB40B6862AA23CA90085D44F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB40B6872AA23CA90085D44F /* Build configuration list for PBXNativeTarget "OpenSeaNFTsAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB40B6882AA23CA90085D44F /* Debug */,
+				BB40B6892AA23CA90085D44F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BB40B64F2AA23CA80085D44F /* Project object */;
+}
