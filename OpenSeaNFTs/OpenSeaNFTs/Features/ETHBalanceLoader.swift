@@ -10,5 +10,5 @@ import Foundation
 public protocol ETHBalanceLoader {
     typealias LoadResult = Swift.Result<String, Error>
     
-    func loadETHBalance(completion: @escaping (LoadResult) -> Void)
+    func load(completion: @escaping (LoadResult) -> Void)
 }

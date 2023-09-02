@@ -20,7 +20,7 @@ final class LoadETHBalanceFromRemoteUseCaseTests: XCTestCase {
         let url = anyURL()
         let (client, sut) = makeSUT(url)
         
-        sut.loadETHBalance() { _ in }
+        sut.load() { _ in }
         
         XCTAssertEqual(client.postRequestURLs, [url])
     }

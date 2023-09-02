@@ -126,7 +126,7 @@ class NFTListViewModel {
     }
     
     func loadETHBalance() {
-        ethBalanceLoader.loadETHBalance { [weak self] result in
+        ethBalanceLoader.load { [weak self] result in
             guard let self = self else { return }
             
             switch result {

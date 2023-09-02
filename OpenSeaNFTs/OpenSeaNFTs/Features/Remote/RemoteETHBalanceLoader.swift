@@ -23,7 +23,7 @@ public class RemoteETHBalanceLoader: ETHBalanceLoader {
         self.client = client
     }
     
-    public func loadETHBalance(completion: @escaping (LoadResult) -> Void) {
+    public func load(completion: @escaping (LoadResult) -> Void) {
         let json: [String : Any] = ["jsonrpc" : "2.0",
                                     "method" : "eth_getBalance",
                                     "params" : [address, "latest"],
