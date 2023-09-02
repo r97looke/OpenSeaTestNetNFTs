@@ -61,7 +61,7 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
         let expectedNFTs = testNFTs()
         let (client, sut) = makeSUT(anyURL())
         
-        expect(sut, toCompleteWith: .success(expectedNFTs)) {
+        expect(sut, toCompleteWith: .success((expectedNFTs, nil))) {
             client.completeWith(statusCode: 200, data: makeNFTsJSON(expectedNFTs))
         }
     }
@@ -94,7 +94,7 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
         let exp = expectation(description: "Wait load to complete")
         sut.load { receivedResult in
             switch (receivedResult, expectedResult) {
-            case let (.success(receivedNFTs), .success(expectedNFTs)):
+            case let (.success((receivedNFTs, _)), .success((expectedNFTs, _))):
                 XCTAssertEqual(receivedNFTs, expectedNFTs, file: file, line: line)
                 break
                 
@@ -111,24 +111,6 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
         action()
         
         wait(for: [exp], timeout: 1.0)
-    }
-    
-    private class HTTPClientSpy: HTTPClient {
-        var requestURLs = [URL]()
-        var completions = [(GETResult) -> Void]()
-        
-        func get(from url: URL, completion: @escaping (GETResult) -> Void) {
-            requestURLs.append(url)
-            completions.append(completion)
-        }
-        
-        func completeWith(error: Error, at index: Int = 0) {
-            completions[index](.failure(error))
-        }
-        
-        func completeWith(statusCode: Int, data: Data, at index: Int = 0) {
-            completions[index](.success((data, HTTPURLResponse(url: requestURLs[index], statusCode: statusCode, httpVersion: nil, headerFields: nil)!)))
-        }
     }
     
     private func testNFT() -> NFTInfo {

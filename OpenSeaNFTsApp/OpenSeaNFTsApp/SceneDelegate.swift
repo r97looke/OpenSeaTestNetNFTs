@@ -29,6 +29,7 @@ struct OpenSeaNFTsAppSettings {
             .appendingPathComponent("account")
             .appendingPathComponent(account())
             .appendingPathComponent("nfts")
+            .appending(queryItems: [URLQueryItem(name: "limit", value: "20")])
     }
     
     static func ethBalanceEndpointURL() -> URL {
