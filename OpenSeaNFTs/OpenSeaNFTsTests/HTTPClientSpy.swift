@@ -32,4 +32,12 @@ class HTTPClientSpy: HTTPClient {
     func completeWith(statusCode: Int, data: Data, at index: Int = 0) {
         completions[index](.success((data, HTTPURLResponse(url: requestURLs[index], statusCode: statusCode, httpVersion: nil, headerFields: nil)!)))
     }
+    
+    func postCompleteWith(error: Error, at index: Int = 0) {
+        postCompletions[index](.failure(error))
+    }
+    
+    func postCompleteWith(statusCode: Int, data: Data, at index: Int = 0) {
+        postCompletions[index](.success((data, HTTPURLResponse(url: requestURLs[index], statusCode: statusCode, httpVersion: nil, headerFields: nil)!)))
+    }
 }

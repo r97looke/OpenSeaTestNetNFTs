@@ -24,6 +24,14 @@ final class LoadETHBalanceFromRemoteUseCaseTests: XCTestCase {
         
         XCTAssertEqual(client.postRequestURLs, [url])
     }
+    
+    func test_load_deliversErrorOnClientError() {
+        let (client, sut) = makeSUT(anyURL())
+        
+        expect(sut, toCompleteWith: .failure(RemoteNFTsLoader.LoadError.connectivity)) {
+            client.postCompleteWith(error: anyNSError())
+        }
+    }
 
     // MARK: Helpers
     private func makeSUT(_ url: URL, file: StaticString = #filePath, line: UInt = #line) -> (client: HTTPClientSpy, sut: RemoteETHBalanceLoader) {
@@ -32,6 +40,30 @@ final class LoadETHBalanceFromRemoteUseCaseTests: XCTestCase {
         trackForMemoryLeaks(client, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (client, sut)
+    }
+    
+    private func expect(_ sut: RemoteETHBalanceLoader, toCompleteWith expectedResult: ETHBalanceLoader.LoadResult, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        
+        let exp = expectation(description: "Wait load to complete")
+        sut.load { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedBalance), .success(expectedBalance)):
+                XCTAssertEqual(receivedBalance, expectedBalance, file: file, line: line)
+                break
+                
+            case (.failure, .failure):
+                break
+                
+            default:
+                XCTFail("Expect \(expectedResult), got \(receivedResult) instead", file: file, line: line)
+            }
+            
+            exp.fulfill()
+        }
+        
+        action()
+        
+        wait(for: [exp], timeout: 1.0)
     }
     
     private func testAddress() -> String {
