@@ -38,6 +38,6 @@ class HTTPClientSpy: HTTPClient {
     }
     
     func postCompleteWith(statusCode: Int, data: Data, at index: Int = 0) {
-        postCompletions[index](.success((data, HTTPURLResponse(url: requestURLs[index], statusCode: statusCode, httpVersion: nil, headerFields: nil)!)))
+        postCompletions[index](.success((data, HTTPURLResponse(url: postRequestURLs[index], statusCode: statusCode, httpVersion: nil, headerFields: nil)!)))
     }
 }

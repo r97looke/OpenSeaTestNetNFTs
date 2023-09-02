@@ -32,7 +32,35 @@ final class LoadETHBalanceFromRemoteUseCaseTests: XCTestCase {
             client.postCompleteWith(error: anyNSError())
         }
     }
+    
+    func test_load_deliversErrorOnNon200HTTPResponse() {
+        let (client, sut) = makeSUT(anyURL())
+        
+        let sample = [100, 199, 201, 300, 400, 500]
+        
+        for (index, code) in sample.enumerated() {
+            expect(sut, toCompleteWith: .failure(RemoteNFTsLoader.LoadError.invalidData)) {
+                client.postCompleteWith(statusCode: code, data: Data(), at: index)
+            }
+        }
+    }
+    
+    func test_load_deliversErrorOn200HTTPResponseWithInValidData() {
+        let (client, sut) = makeSUT(anyURL())
+        
+        expect(sut, toCompleteWith: .failure(RemoteNFTsLoader.LoadError.invalidData)) {
+            client.postCompleteWith(statusCode: 200, data: Data("invalid data".utf8))
+        }
+    }
 
+    func test_load_deliversErrorOn200HTTPResponseWithEmptyData() {
+        let (client, sut) = makeSUT(anyURL())
+        
+        expect(sut, toCompleteWith: .failure(RemoteNFTsLoader.LoadError.invalidData)) {
+            client.postCompleteWith(statusCode: 200, data: Data())
+        }
+    }
+    
     // MARK: Helpers
     private func makeSUT(_ url: URL, file: StaticString = #filePath, line: UInt = #line) -> (client: HTTPClientSpy, sut: RemoteETHBalanceLoader) {
         let client = HTTPClientSpy()
