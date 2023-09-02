@@ -25,7 +25,7 @@ class NFTListViewModel {
     // MARK: Output
     let isRefreshing = PublishRelay<Bool>()
     let isNextLoading = PublishRelay<Bool>()
-    let displayModels = BehaviorRelay<[NFTInfoModel]>(value: [])
+    let displayModels = PublishRelay<[NFTInfoModel]>()
     let ethBalanceModel = PublishRelay<String>()
     
     var models = [NFTInfoModel]()

@@ -28,6 +28,7 @@ final class NFTListViewController: UIViewController {
     private let DefaultSpace: CGFloat = 8.0
     
     private var collectionView: UICollectionView!
+    private var emptyLabel = UILabel()
     private let refreshView = UIActivityIndicatorView(style: .large)
     private let loadingView = UIActivityIndicatorView(style: .large)
     
@@ -55,6 +56,20 @@ final class NFTListViewController: UIViewController {
             make.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading).offset(DefaultMargin)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-DefaultMargin)
             make.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing).offset(-DefaultMargin)
+        }
+        
+        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
+        emptyLabel.font = .boldSystemFont(ofSize: 24)
+        emptyLabel.textColor = .red
+        emptyLabel.textAlignment = .center
+        emptyLabel.text = "Can not get NFTs! Please try again later!"
+        emptyLabel.numberOfLines = 0
+        emptyLabel.isHidden = true
+        view.addSubview(emptyLabel)
+        emptyLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(DefaultMargin)
+            make.trailing.equalToSuperview().offset(-DefaultMargin)
+            make.centerY.equalToSuperview()
         }
         
         refreshView.translatesAutoresizingMaskIntoConstraints = false
@@ -103,6 +118,7 @@ final class NFTListViewController: UIViewController {
             
             self.showDetail(model)
         }.disposed(by: disposeBag)
+        viewModel.displayModels.map { !$0.isEmpty }.bind(to: emptyLabel.rx.isHidden).disposed(by: disposeBag)
         
         loadBalance()
         refresh()
