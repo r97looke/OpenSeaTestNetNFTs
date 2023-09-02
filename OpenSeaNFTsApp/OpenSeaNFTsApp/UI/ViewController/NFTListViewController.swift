@@ -144,6 +144,7 @@ final class NFTListViewController: UIViewController {
     }
     
     private func loadBalance() {
+        title = viewModel.title
         viewModel.loadBalanceModel.accept(Void())
     }
     
