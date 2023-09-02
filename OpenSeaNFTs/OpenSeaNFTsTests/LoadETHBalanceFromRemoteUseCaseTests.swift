@@ -61,6 +61,15 @@ final class LoadETHBalanceFromRemoteUseCaseTests: XCTestCase {
         }
     }
     
+    func test_load_deliversBalanceOn200HTTPResponseWithValidData() {
+        let expectedBalance = testBalance()
+        let (client, sut) = makeSUT(anyURL())
+        
+        expect(sut, toCompleteWith: .success((expectedBalance))) {
+            client.postCompleteWith(statusCode: 200, data: makeBalanceJSON(expectedBalance))
+        }
+    }
+    
     // MARK: Helpers
     private func makeSUT(_ url: URL, file: StaticString = #filePath, line: UInt = #line) -> (client: HTTPClientSpy, sut: RemoteETHBalanceLoader) {
         let client = HTTPClientSpy()
@@ -96,5 +105,16 @@ final class LoadETHBalanceFromRemoteUseCaseTests: XCTestCase {
     
     private func testAddress() -> String {
         return "0x85fD692D2a075908079261F5E351e7fE0267dB02"
+    }
+    
+    private func testBalance() -> String {
+        return "0x12345"
+    }
+    
+    private func makeBalanceJSON(_ balance: String) -> Data {
+        let json: [String : Any] = ["id" : 1,
+                                    "jsonrpc" : "2.0",
+                                    "result" : balance]
+        return try! JSONSerialization.data(withJSONObject: json)
     }
 }
