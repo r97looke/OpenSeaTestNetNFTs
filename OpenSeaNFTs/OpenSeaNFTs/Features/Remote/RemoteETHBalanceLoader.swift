@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct RemoteETHGetBalanceResponse: Codable {
-    let id: Int
-    let jsonrpc: String
-    let result: String
-}
-
 public class RemoteETHBalanceLoader: ETHBalanceLoader {
     enum LoadError: Swift.Error {
         case connectivity
