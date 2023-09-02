@@ -107,7 +107,12 @@ final class NFTListViewController: UIViewController {
             self.showDetail(model)
         }.disposed(by: disposeBag)
         
+        loadBalance()
         refresh()
+    }
+    
+    private func loadBalance() {
+        viewModel.loadBalanceModel.accept(Void())
     }
     
     private func refresh() {

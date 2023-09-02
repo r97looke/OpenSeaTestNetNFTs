@@ -9,6 +9,7 @@ import Foundation
 import OpenSeaNFTs
 import RxSwift
 import RxRelay
+import web3swift
 
 class NFTListViewModel {
     
@@ -28,6 +29,7 @@ class NFTListViewModel {
     // MARK: Input
     let refreshModels = PublishRelay<Void>()
     let loadNextPageModels = PublishRelay<Void>()
+    let loadBalanceModel = PublishRelay<Void>()
     
     private let disposeBag = DisposeBag()
     
@@ -44,6 +46,12 @@ class NFTListViewModel {
             guard let self = self else { return }
             
             self.loadNextPage()
+        }.disposed(by: disposeBag)
+        
+        loadBalanceModel.subscribe { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.loadBalance()
         }.disposed(by: disposeBag)
     }
     
@@ -110,6 +118,9 @@ class NFTListViewModel {
                 }
             }
         }
+    }
+    
+    func loadBalance() {
     }
     
     let title = "List"
