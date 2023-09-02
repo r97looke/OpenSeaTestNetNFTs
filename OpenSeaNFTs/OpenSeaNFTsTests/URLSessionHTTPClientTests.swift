@@ -158,6 +158,18 @@ final class URLSessionHTTPClientTests: XCTestCase {
         XCTAssertNotNil(postResultError(sut, url: url, data: anyData(), response: anyHTTPURLResponse(url, statusCode: 200), error: anyNSError()))
     }
     
+    func test_postToURL_succeedsOnHTTPResponseWithNilData() {
+        let url = anyURL()
+        let httpURLResponse = anyHTTPURLResponse(url, statusCode: 200)
+        let sut = makeSUT()
+        
+        let (receivedData, receivedResponse) = postResultValues(sut, url: url, data: nil, response: httpURLResponse, error: nil)
+        let emptyData = Data()
+        XCTAssertEqual(receivedData, emptyData)
+        XCTAssertEqual(receivedResponse?.url, httpURLResponse.url)
+        XCTAssertEqual(receivedResponse?.statusCode, httpURLResponse.statusCode)
+    }
+    
     // MARK: Helpers
     private func makeSUT() -> URLSessionHTTPClient {
         let sut = URLSessionHTTPClient()
@@ -240,6 +252,29 @@ final class URLSessionHTTPClientTests: XCTestCase {
         
         wait(for: [exp], timeout: 1.0)
         return receivedError
+    }
+    
+    private func postResultValues(_ sut: URLSessionHTTPClient, url: URL, data: Data?, response: URLResponse?, error: Error?, file: StaticString = #filePath, line: UInt = #line) -> (Data?, HTTPURLResponse?) {
+        let exp = expectation(description: "Wait for complete")
+        
+        URLProtocolStub.stub(data: data, response: response, error: nil)
+        var receivedData: Data?
+        var receivedResponse: HTTPURLResponse?
+        sut.post(to: url, data: Data()) { result in
+            switch result {
+            case let .success((resultData, resultResponse)):
+                receivedData = resultData
+                receivedResponse = resultResponse
+                
+            default:
+                XCTFail("Expect success, got \(result) instead", file: file, line: line)
+            }
+            
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+        return (receivedData, receivedResponse)
     }
     
     private class URLProtocolStub: URLProtocol {
