@@ -72,14 +72,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
-        
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
     
     private func showDetail(_ model: NFTInfoModel) {
-        let detailViewModel = NFTDetailsViewModel(model: model)
-        let detailVC = NFTDetailsViewController(viewModel: detailViewModel)
+        let detailVC = NFTDetailComposer.compose(model: model)
         navigationController.pushViewController(detailVC, animated: true)
     }
 
@@ -110,7 +108,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
 
