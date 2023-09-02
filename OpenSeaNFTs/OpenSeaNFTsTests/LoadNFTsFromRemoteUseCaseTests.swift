@@ -161,11 +161,20 @@ private extension NFTInfo {
 
 private extension RemoteNFTInfo {
     func json() -> [String : Any] {
-        return ["identifier" : identifier,
-                "collection" : collection,
-                "contract" : contract,
-                "name" : name,
-                "description" : description,
-                "image_url" : image_url]
+        if let image_url = image_url {
+            return ["identifier" : identifier,
+                    "collection" : collection,
+                    "contract" : contract,
+                    "name" : name,
+                    "description" : description,
+                    "image_url" : image_url]
+        }
+        else {
+            return ["identifier" : identifier,
+                    "collection" : collection,
+                    "contract" : contract,
+                    "name" : name,
+                    "description" : description]
+        }
     }
 }
