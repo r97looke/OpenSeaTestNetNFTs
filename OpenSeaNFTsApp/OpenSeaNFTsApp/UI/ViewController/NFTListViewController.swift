@@ -100,7 +100,7 @@ final class NFTListViewController: UIViewController {
         collectionView.delegate = self
         collectionView.register(NFTInfoCell.self, forCellWithReuseIdentifier: "\(type(of: NFTInfoCell.self))")
         
-        viewModel.displayModels.bind(to: collectionView.rx.items(cellIdentifier: "\(type(of: NFTInfoCell.self))", cellType: NFTInfoCell.self)) { (item, model, cell) in
+        viewModel.nftInfoModels.bind(to: collectionView.rx.items(cellIdentifier: "\(type(of: NFTInfoCell.self))", cellType: NFTInfoCell.self)) { (item, model, cell) in
             cell.model = model
         }.disposed(by: disposeBag)
         
@@ -118,7 +118,7 @@ final class NFTListViewController: UIViewController {
             self.showDetail(model)
         }.disposed(by: disposeBag)
         
-        viewModel.displayModels.map { !$0.isEmpty }.bind(to: emptyLabel.rx.isHidden)
+        viewModel.nftInfoModels.map { !$0.isEmpty }.bind(to: emptyLabel.rx.isHidden)
             .disposed(by: disposeBag)
         
         loadBalance()

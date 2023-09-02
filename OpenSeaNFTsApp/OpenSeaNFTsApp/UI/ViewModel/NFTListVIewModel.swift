@@ -13,22 +13,21 @@ import web3swift
 import Web3Core
 import BigInt
 
-class NFTListViewModel {
+final class NFTListViewModel {
     
-    private let loader: NFTsLoader
-    private let ethBalanceLoader: ETHBalanceLoader
+    let title = "List"
     private var next: String?
     private var isRefresh = false
     private var isLoading = false
     private var isAllLoaded = false
     
+    private var models = [NFTInfoModel]()
+    
     // MARK: Output
     let isRefreshing = PublishRelay<Bool>()
     let isNextLoading = PublishRelay<Bool>()
-    let displayModels = PublishRelay<[NFTInfoModel]>()
+    let nftInfoModels = PublishRelay<[NFTInfoModel]>()
     let ethBalanceModel = PublishRelay<String>()
-    
-    var models = [NFTInfoModel]()
     
     // MARK: Input
     let refreshModels = PublishRelay<Void>()
@@ -37,10 +36,17 @@ class NFTListViewModel {
     
     private let disposeBag = DisposeBag()
     
+    private let loader: NFTsLoader
+    private let ethBalanceLoader: ETHBalanceLoader
+    
     init(loader: NFTsLoader, ethBalanceLoader: ETHBalanceLoader) {
         self.loader = loader
         self.ethBalanceLoader = ethBalanceLoader
-
+        
+        bind()
+    }
+    
+    private func bind() {
         refreshModels.subscribe { [weak self] _ in
             guard let self = self else { return }
             
@@ -60,17 +66,18 @@ class NFTListViewModel {
         }.disposed(by: disposeBag)
     }
     
-    typealias LoadCompletion = () -> Void
-    
-    func refresh() {
-        models.removeAll()
+    private func refresh() {
+        if isLoading {
+            return
+        }
+        
         next = nil
         isRefresh = true
         isAllLoaded = false
         loadNextPage()
     }
     
-    func loadNextPage() {
+    private func loadNextPage() {
         if isAllLoaded {
             return
         }
@@ -105,8 +112,12 @@ class NFTListViewModel {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 
+                if (self.isRefresh) {
+                    self.models.removeAll()
+                }
+                
                 self.models.append(contentsOf: loadedModels)
-                displayModels.accept(self.models)
+                nftInfoModels.accept(self.models)
                 
                 if loadedNext == nil {
                     self.isAllLoaded = true
@@ -125,7 +136,7 @@ class NFTListViewModel {
         }
     }
     
-    func loadETHBalance() {
+    private func loadETHBalance() {
         ethBalanceLoader.load { [weak self] result in
             guard let self = self else { return }
             
@@ -141,8 +152,6 @@ class NFTListViewModel {
             }
         }
     }
-    
-    let title = "List"
 }
 
 private extension NFTInfo {
