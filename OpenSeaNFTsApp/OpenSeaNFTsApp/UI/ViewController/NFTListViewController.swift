@@ -130,8 +130,10 @@ final class NFTListViewController: UIViewController {
         
         becomeActiveDisposable = NotificationCenter.default.rx.notification(UIApplication.didBecomeActiveNotification)
             .subscribe(onNext: { [weak self] _ in
-            self?.loadBalance()
-            self?.refresh()
+                guard let self = self else { return }
+                
+                self.loadBalance()
+                self.refresh()
         })
         becomeActiveDisposable?.disposed(by: disposeBag)
     }
@@ -164,7 +166,7 @@ final class NFTListViewController: UIViewController {
     }
 }
 
-// MARK: Helpers
+// MARK: UICollectionViewDelegateFlowLayout
 extension NFTListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
