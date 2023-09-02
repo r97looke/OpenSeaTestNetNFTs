@@ -27,12 +27,12 @@ class NFTInfoCell: UICollectionViewCell {
         
         backgroundView = nil
         backgroundColor = .clear
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .clear
         contentView.layer.cornerRadius = 8.0
         contentView.layer.borderWidth = 1.0
         contentView.layer.borderColor = UIColor.blue.cgColor
         
-        imageView.backgroundColor = .lightGray
+        imageView.backgroundColor = .clear
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
