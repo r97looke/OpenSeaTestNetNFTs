@@ -94,14 +94,17 @@ final class NFTListViewModel {
             isNextLoading.accept(true)
         }
         
+        let beforeLoadNext = next
         loader.load(next: next) { [weak self] result in
             guard let self = self else { return }
             
+            var success = false
             var loadedModels = [NFTInfoModel]()
-            var loadedNext: String? = nil
+            var loadedNext: String? = beforeLoadNext
             
             switch result {
             case let .success((nfts, next)):
+                success = true
                 loadedModels = nfts.map{ $0.toModel() }
                 loadedNext = next
                 
@@ -116,10 +119,15 @@ final class NFTListViewModel {
                     self.models.removeAll()
                 }
                 
-                self.models.append(contentsOf: loadedModels)
-                nftInfoModels.accept(self.models)
+                if success {
+                    self.models.append(contentsOf: loadedModels)
+                    nftInfoModels.accept(self.models)
+                }
+                else if self.models.isEmpty {
+                    nftInfoModels.accept(self.models)
+                }
                 
-                if loadedNext == nil {
+                if success, loadedNext == nil {
                     self.isAllLoaded = true
                 }
                 self.next = loadedNext
