@@ -15,6 +15,7 @@
 		BB40B67C2AA23CA90085D44F /* OpenSeaNFTsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40B67B2AA23CA90085D44F /* OpenSeaNFTsAppUITests.swift */; };
 		BB40B67E2AA23CA90085D44F /* OpenSeaNFTsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40B67D2AA23CA90085D44F /* OpenSeaNFTsAppUITestsLaunchTests.swift */; };
 		BB5A0B182AA3F2430029AE4D /* NFTDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A0B172AA3F2430029AE4D /* NFTDetailsViewModel.swift */; };
+		BB5A0B1B2AA3FD8D0029AE4D /* NFTListComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A0B1A2AA3FD8D0029AE4D /* NFTListComposer.swift */; };
 		BB5E47682AA2403100CEEE5B /* NFTListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E47672AA2403100CEEE5B /* NFTListViewController.swift */; };
 		BB5E476D2AA2409B00CEEE5B /* NFTListVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E476C2AA2409B00CEEE5B /* NFTListVIewModel.swift */; };
 		BB5E476F2AA2426C00CEEE5B /* OpenSeaNFTs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5E476E2AA2426C00CEEE5B /* OpenSeaNFTs.framework */; };
@@ -76,6 +77,7 @@
 		BB40B67B2AA23CA90085D44F /* OpenSeaNFTsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaNFTsAppUITests.swift; sourceTree = "<group>"; };
 		BB40B67D2AA23CA90085D44F /* OpenSeaNFTsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaNFTsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BB5A0B172AA3F2430029AE4D /* NFTDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTDetailsViewModel.swift; sourceTree = "<group>"; };
+		BB5A0B1A2AA3FD8D0029AE4D /* NFTListComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTListComposer.swift; sourceTree = "<group>"; };
 		BB5E47672AA2403100CEEE5B /* NFTListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTListViewController.swift; sourceTree = "<group>"; };
 		BB5E476C2AA2409B00CEEE5B /* NFTListVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTListVIewModel.swift; sourceTree = "<group>"; };
 		BB5E476E2AA2426C00CEEE5B /* OpenSeaNFTs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OpenSeaNFTs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,9 +195,18 @@
 			path = OpenSeaNFTsAppUITests;
 			sourceTree = "<group>";
 		};
+		BB5A0B192AA3FD6B0029AE4D /* Composer */ = {
+			isa = PBXGroup;
+			children = (
+				BB5A0B1A2AA3FD8D0029AE4D /* NFTListComposer.swift */,
+			);
+			path = Composer;
+			sourceTree = "<group>";
+		};
 		BB5E47692AA2407000CEEE5B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				BB5A0B192AA3FD6B0029AE4D /* Composer */,
 				BB5E47752AA24C5500CEEE5B /* Model */,
 				BB5E47722AA248EB00CEEE5B /* View */,
 				BB5E476A2AA2407A00CEEE5B /* ViewModel */,
@@ -482,6 +493,7 @@
 				BB40B65B2AA23CA80085D44F /* AppDelegate.swift in Sources */,
 				BB5E476D2AA2409B00CEEE5B /* NFTListVIewModel.swift in Sources */,
 				BB5E47682AA2403100CEEE5B /* NFTListViewController.swift in Sources */,
+				BB5A0B1B2AA3FD8D0029AE4D /* NFTListComposer.swift in Sources */,
 				BB40B65D2AA23CA80085D44F /* SceneDelegate.swift in Sources */,
 				BB5A0B182AA3F2430029AE4D /* NFTDetailsViewModel.swift in Sources */,
 				BB5E47792AA2755A00CEEE5B /* NFTDetailsViewController.swift in Sources */,

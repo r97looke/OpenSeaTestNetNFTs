@@ -17,11 +17,13 @@ final class NFTListViewController: UIViewController {
     }
     
     private let viewModel: NFTListViewModel
+    private let selection: (NFTInfoModel) -> Void
     private let disposeBag = DisposeBag()
     private var becomeActiveDisposable: Disposable?
     
-    init(viewModel: NFTListViewModel) {
+    init(viewModel: NFTListViewModel, selection: @escaping (NFTInfoModel) -> Void) {
         self.viewModel = viewModel
+        self.selection = selection
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -115,7 +117,7 @@ final class NFTListViewController: UIViewController {
         collectionView.rx.modelSelected(NFTInfoModel.self).subscribe { [weak self] model in
             guard let self = self else { return }
             
-            self.showDetail(model)
+            self.selection(model)
         }.disposed(by: disposeBag)
         
         viewModel.nftInfoModels.map { !$0.isEmpty }.bind(to: emptyLabel.rx.isHidden)
@@ -158,12 +160,6 @@ final class NFTListViewController: UIViewController {
     
     private func refresh() {
         viewModel.refreshModels.accept(Void())
-    }
-    
-    private func showDetail(_ model: NFTInfoModel) {
-        let detailViewModel = NFTDetailsViewModel(model: model)
-        let detailVC = NFTDetailsViewController(viewModel: detailViewModel)
-        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

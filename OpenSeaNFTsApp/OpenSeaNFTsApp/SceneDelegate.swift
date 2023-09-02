@@ -41,7 +41,29 @@ struct OpenSeaNFTsAppSettings {
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    private lazy var httpClient: HTTPClient = {
+        return URLSessionHTTPClient()
+    }()
+    
+    private lazy var nftLoader: NFTsLoader = {
+        let url = OpenSeaNFTsAppSettings.nftsEndpointURL()
+        return RemoteNFTsLoader(url: url, client: httpClient)
+    }()
+    
+    private lazy var ethBalanceLoader: ETHBalanceLoader = {
+        let ethBalanceURL = OpenSeaNFTsAppSettings.ethBalanceEndpointURL()
+        return RemoteETHBalanceLoader(url: ethBalanceURL,
+                                      address:  OpenSeaNFTsAppSettings.account(),
+                                      client: httpClient)
+    }()
 
+    private lazy var navigationController: UINavigationController = {
+        return UINavigationController(
+            rootViewController: NFTListComposer.compose(nftLoader: nftLoader,
+                                                        ethBalanceLoader: ethBalanceLoader,
+                                                        selection: showDetail))
+    }()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -51,18 +73,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let url = OpenSeaNFTsAppSettings.nftsEndpointURL()
-        let client = URLSessionHTTPClient()
-        let loader = RemoteNFTsLoader(url: url, client: client)
-        let ethBalanceURL = OpenSeaNFTsAppSettings.ethBalanceEndpointURL()
-        let ethBalanceLoader = RemoteETHBalanceLoader(url: ethBalanceURL,
-                                                      address:  OpenSeaNFTsAppSettings.account(),
-                                                      client: client)
-        let viewModel = NFTListViewModel(loader: loader, ethBalanceLoader: ethBalanceLoader)
-        let viewController = NFTListViewController(viewModel: viewModel)
-        let navigationViewController = UINavigationController(rootViewController: viewController)
-        window?.rootViewController = navigationViewController
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+    }
+    
+    private func showDetail(_ model: NFTInfoModel) {
+        let detailViewModel = NFTDetailsViewModel(model: model)
+        let detailVC = NFTDetailsViewController(viewModel: detailViewModel)
+        navigationController.pushViewController(detailVC, animated: true)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
