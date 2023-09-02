@@ -102,6 +102,23 @@ final class URLSessionHTTPClientTests: XCTestCase {
         XCTAssertEqual(receivedResponse?.statusCode, httpURLResponse.statusCode)
     }
     
+    func test_postToURL_doesPOSTRequestWithURL() {
+        let url = anyURL()
+        let sut = makeSUT()
+        let exp = expectation(description: "Wait for complete")
+        
+        URLProtocolStub.requestObserver = { request in
+            XCTAssertEqual(request.httpMethod, "POST")
+            XCTAssertEqual(request.url, url)
+            
+            exp.fulfill()
+        }
+        
+        sut.post(to: url, data: Data()) { _ in }
+        
+        wait(for: [exp], timeout: 1.0)
+    }
+    
     // MARK: Helpers
     private func makeSUT() -> URLSessionHTTPClient {
         let sut = URLSessionHTTPClient()
