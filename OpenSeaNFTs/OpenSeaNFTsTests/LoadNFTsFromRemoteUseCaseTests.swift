@@ -36,9 +36,14 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversErrorOnNon200HTTPResponse() {
         let (client, sut) = makeSUT(anyURL())
         
-        expect(sut, toCompleteWith: .failure(RemoteNFTsLoader.LoadError.invalidData)) {
-            client.completeWith(statusCode: 199, data: Data())
+        let sample = [100, 199, 201, 300, 400, 500]
+        
+        for (index, code) in sample.enumerated() {
+            expect(sut, toCompleteWith: .failure(RemoteNFTsLoader.LoadError.invalidData)) {
+                client.completeWith(statusCode: code, data: Data(), at: index)
+            }
         }
+        
     }
     
     func test_load_deliversErrorOn200HTTPResponseWithInValidData() {
