@@ -11,7 +11,7 @@ import SDWebImage
 import RxSwift
 import RxCocoa
 
-class NFTDetailsViewController: UIViewController {
+final class NFTDetailsViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -25,17 +25,17 @@ class NFTDetailsViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    let DefaultMargin = 16.0
-    let DefaultSpace = 8.0
+    private let DefaultMargin = 16.0
+    private let DefaultSpace = 8.0
     
-    let safeAreaView = UIView()
-    let scrollView = UIScrollView()
-    let vStack = UIStackView()
-    let imageView = UIImageView()
-    let nameLabel = UILabel()
-    let descriptionLabel = UILabel()
+    private let safeAreaView = UIView()
+    private let scrollView = UIScrollView()
+    private let vStack = UIStackView()
+    private let imageView = UIImageView()
+    private let nameLabel = UILabel()
+    private let descriptionLabel = UILabel()
     
-    let permalinkButton = UIButton(type: .roundedRect)
+    private let permalinkButton = UIButton(type: .roundedRect)
     
     override func loadView() {
         super.loadView()
@@ -130,7 +130,6 @@ class NFTDetailsViewController: UIViewController {
                 }
             }
         }
-        
     }
     
     private func openPermalink() {
@@ -141,7 +140,7 @@ class NFTDetailsViewController: UIViewController {
 
 }
 
-//
+// MARK: Helpers
 private extension NFTInfoModel {
     func permalink() -> URL {
         return URL(string: "https://testnets.opensea.io/assets/goerli/\(contract)/\(identifier)")!
