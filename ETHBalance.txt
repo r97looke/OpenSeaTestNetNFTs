@@ -1,0 +1,11 @@
+// Request
+curl  https://ethereum-goerli-rpc.allthatnode.com \
+--request POST \
+--header "Content-Type: application/json" \
+--data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x85fD692D2a075908079261F5E351e7fE0267dB02", "latest"],"id":1}'
+// Result
+{
+  "id":1,
+  "jsonrpc": "2.0",
+  "result": "0x20ca070fdb90076" // 158972490234375000
+}
