@@ -30,7 +30,9 @@ public class RemoteETHBalanceLoader: ETHBalanceLoader {
                                     "id":1]
         let data = try! JSONSerialization.data(withJSONObject: json)
         
-        client.post(to: url, data: data) { result in
+        client.post(to: url, data: data) { [weak self] result in
+            guard self != nil else { return }
+            
             switch result {
             case .failure:
                 completion(.failure(LoadError.connectivity))

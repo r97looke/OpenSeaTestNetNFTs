@@ -70,6 +70,20 @@ final class LoadETHBalanceFromRemoteUseCaseTests: XCTestCase {
         }
     }
     
+    func test_load_doesNotDeliverResultAfterSUTHasBeenDeallocate() {
+        let client = HTTPClientSpy()
+        var sut: RemoteETHBalanceLoader? = RemoteETHBalanceLoader(url: anyURL(), address: testAddress(), client: client)
+        
+        var receivedResult: ETHBalanceLoader.LoadResult?
+        sut?.load() { result in
+            receivedResult = result
+        }
+        
+        sut = nil
+        client.postCompleteWith(error: anyNSError())
+        XCTAssertNil(receivedResult)
+    }
+    
     // MARK: Helpers
     private func makeSUT(_ url: URL, file: StaticString = #filePath, line: UInt = #line) -> (client: HTTPClientSpy, sut: RemoteETHBalanceLoader) {
         let client = HTTPClientSpy()
