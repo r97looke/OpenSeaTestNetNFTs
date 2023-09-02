@@ -1,4 +1,7 @@
 PODS:
+  - BigInt (4.0.0)
+  - CryptoSwift (1.7.1)
+  - PromiseKit/CorePromise (6.18.1)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
@@ -10,7 +13,22 @@ PODS:
   - SDWebImage/Core (5.17.0)
   - SDWebImageSVGCoder (1.7.0):
     - SDWebImage/Core (~> 5.6)
+  - secp256k1.swift (0.1.4)
   - SnapKit (5.0.1)
+  - Web3 (0.4.2):
+    - Web3/Core (= 0.4.2)
+    - Web3/HTTPExtension (= 0.4.2)
+  - Web3/ContractABI (0.4.2):
+    - Web3/Core
+  - Web3/Core (0.4.2):
+    - BigInt (~> 4.0)
+    - CryptoSwift (~> 1.0)
+    - secp256k1.swift (~> 0.1)
+  - Web3/HTTPExtension (0.4.2):
+    - Web3/Core
+  - Web3/PromiseKit (0.4.2):
+    - PromiseKit/CorePromise (~> 6.0)
+    - Web3/Core
 
 DEPENDENCIES:
   - RxCocoa (= 6.5.0)
@@ -18,24 +36,37 @@ DEPENDENCIES:
   - SDWebImage (~> 5.0)
   - SDWebImageSVGCoder
   - SnapKit (~> 5.0.0)
+  - Web3
+  - Web3/ContractABI
+  - Web3/PromiseKit
 
 SPEC REPOS:
   trunk:
+    - BigInt
+    - CryptoSwift
+    - PromiseKit
     - RxCocoa
     - RxRelay
     - RxSwift
     - SDWebImage
     - SDWebImageSVGCoder
+    - secp256k1.swift
     - SnapKit
+    - Web3
 
 SPEC CHECKSUMS:
+  BigInt: 2aad1a9942dc932ec8b84290d2c564a3d76f97ab
+  CryptoSwift: d3d18dc357932f7e6d580689e065cf1f176007c1
+  PromiseKit: 49d70c53d5d20e346beaea4b276b5dd2ab446bb4
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SDWebImage: 750adf017a315a280c60fde706ab1e552a3ae4e9
   SDWebImageSVGCoder: 15a300a97ec1c8ac958f009c02220ac0402e936c
+  secp256k1.swift: a7e7a214f6db6ce5db32cc6b2b45e5c4dd633634
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Web3: 7b2c30f98f24cc290bc671ab525d7a30a2afbc73
 
-PODFILE CHECKSUM: 98fde8c26d4e127fa5d7d96cd39434e51e338464
+PODFILE CHECKSUM: 23aeb9ed4580842460c48fe1cfb78463c82ce5b5
 
 COCOAPODS: 1.12.1
