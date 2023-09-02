@@ -99,14 +99,11 @@ final class NFTListViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.register(NFTInfoCell.self, forCellWithReuseIdentifier: "\(type(of: NFTInfoCell.self))")
+        
         viewModel.displayModels.bind(to: collectionView.rx.items(cellIdentifier: "\(type(of: NFTInfoCell.self))", cellType: NFTInfoCell.self)) { (item, model, cell) in
             cell.model = model
         }.disposed(by: disposeBag)
-        collectionView.rx.observe(CGRect.self, "bounds").subscribe { [weak self] _ in
-            guard let self = self else { return }
-            
-            self.collectionView.collectionViewLayout.invalidateLayout()
-        }.disposed(by: disposeBag)
+        
         collectionView.rx.willDisplayCell.subscribe { [weak self] cell, indexPath in
             guard let self = self else { return }
 
@@ -114,12 +111,15 @@ final class NFTListViewController: UIViewController {
                 self.viewModel.loadNextPageModels.accept(Void())
             }
         }.disposed(by: disposeBag)
+        
         collectionView.rx.modelSelected(NFTInfoModel.self).subscribe { [weak self] model in
             guard let self = self else { return }
             
             self.showDetail(model)
         }.disposed(by: disposeBag)
-        viewModel.displayModels.map { !$0.isEmpty }.bind(to: emptyLabel.rx.isHidden).disposed(by: disposeBag)
+        
+        viewModel.displayModels.map { !$0.isEmpty }.bind(to: emptyLabel.rx.isHidden)
+            .disposed(by: disposeBag)
         
         loadBalance()
         refresh()
@@ -141,6 +141,12 @@ final class NFTListViewController: UIViewController {
         
         becomeActiveDisposable?.dispose()
         becomeActiveDisposable = nil
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     private func loadBalance() {
