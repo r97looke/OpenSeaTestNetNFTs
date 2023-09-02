@@ -107,11 +107,6 @@ class NFTDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let titleView = UILabel()
-        titleView.textColor = .black
-        titleView.text = model.collection
-        navigationItem.titleView = titleView
-        
         title = model.collection
         nameLabel.text = model.name
         descriptionLabel.text = model.description
