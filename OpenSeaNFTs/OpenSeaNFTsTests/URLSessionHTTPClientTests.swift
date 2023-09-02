@@ -143,6 +143,21 @@ final class URLSessionHTTPClientTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    func test_postToURL_failsOnInvalidDataResponseErrorCombination() {
+        let url = anyURL()
+        let sut = makeSUT()
+        
+        XCTAssertNotNil(postResultError(sut, url: url, data: nil, response: nil, error: nil))
+        XCTAssertNotNil(postResultError(sut, url: url, data: nil, response: nonHTTPURLResponse(url), error: nil))
+        XCTAssertNotNil(postResultError(sut, url: url, data: nil, response: nonHTTPURLResponse(url), error: anyNSError()))
+        XCTAssertNotNil(postResultError(sut, url: url, data: nil, response: anyHTTPURLResponse(url, statusCode: 200), error: anyNSError()))
+        XCTAssertNotNil(postResultError(sut, url: url, data: anyData(), response: nil, error: nil))
+        XCTAssertNotNil(postResultError(sut, url: url, data: anyData(), response: nil, error: anyNSError()))
+        XCTAssertNotNil(postResultError(sut, url: url, data: anyData(), response: nonHTTPURLResponse(url), error: nil))
+        XCTAssertNotNil(postResultError(sut, url: url, data: anyData(), response: nonHTTPURLResponse(url), error: anyNSError()))
+        XCTAssertNotNil(postResultError(sut, url: url, data: anyData(), response: anyHTTPURLResponse(url, statusCode: 200), error: anyNSError()))
+    }
+    
     // MARK: Helpers
     private func makeSUT() -> URLSessionHTTPClient {
         let sut = URLSessionHTTPClient()
@@ -204,6 +219,27 @@ final class URLSessionHTTPClientTests: XCTestCase {
         
         wait(for: [exp], timeout: 1.0)
         return (receivedData, receivedResponse)
+    }
+    
+    private func postResultError(_ sut: URLSessionHTTPClient, url: URL, data: Data?, response: URLResponse?, error: Error?, file: StaticString = #filePath, line: UInt = #line) -> Error? {
+        let exp = expectation(description: "Wait for complete")
+        
+        URLProtocolStub.stub(data: data, response: response, error: error)
+        var receivedError: Error?
+        sut.post(to: url, data: Data()) { result in
+            switch result {
+            case let .failure(error):
+                receivedError = error
+                
+            default:
+                XCTFail("Expect error, got \(result) instead", file: file, line: line)
+            }
+            
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+        return receivedError
     }
     
     private class URLProtocolStub: URLProtocol {
