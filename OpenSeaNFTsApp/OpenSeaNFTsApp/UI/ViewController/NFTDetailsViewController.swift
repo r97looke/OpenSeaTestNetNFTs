@@ -11,35 +11,42 @@ import SDWebImage
 import RxSwift
 import RxCocoa
 
-class NFTDetailsViewController: UIViewController {
+final class NFTDetailsViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let model: NFTInfoModel
+    private let viewModel: NFTDetailsViewModel
     private let disposeBag = DisposeBag()
     
-    init(model: NFTInfoModel) {
-        self.model = model
+    init(viewModel: NFTDetailsViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
-    let DefaultMargin = 16.0
-    let DefaultSpace = 8.0
+    private let DefaultMargin = 16.0
+    private let DefaultSpace = 8.0
     
-    let scrollView = UIScrollView()
-    let vStack = UIStackView()
-    let imageView = UIImageView()
-    let nameLabel = UILabel()
-    let descriptionLabel = UILabel()
+    private let safeAreaView = UIView()
+    private let scrollView = UIScrollView()
+    private let vStack = UIStackView()
+    private let imageView = UIImageView()
+    private let nameLabel = UILabel()
+    private let descriptionLabel = UILabel()
     
-    let permalinkButton = UIButton(type: .roundedRect)
+    private let permalinkButton = UIButton(type: .roundedRect)
     
     override func loadView() {
         super.loadView()
         
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
+        
+        safeAreaView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(safeAreaView)
+        safeAreaView.snp.makeConstraints { make in
+            make.edges.equalTo(self.view.safeAreaLayoutGuide)
+        }
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.isDirectionalLockEnabled = true
@@ -53,19 +60,20 @@ class NFTDetailsViewController: UIViewController {
             self.openPermalink()
         }.disposed(by: disposeBag)
         
-        view.addSubview(scrollView)
-        view.addSubview(permalinkButton)
+        safeAreaView.addSubview(scrollView)
+        safeAreaView.addSubview(permalinkButton)
         
         scrollView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.width.equalToSuperview()
+            make.top.equalToSuperview().offset(DefaultMargin)
+            make.leading.equalToSuperview().offset(DefaultMargin)
+            make.trailing.equalToSuperview().offset(-DefaultMargin)
         }
         
         permalinkButton.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.bottom).offset(DefaultSpace)
-            make.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading).offset(DefaultMargin)
-            make.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing).offset(-DefaultMargin)
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-DefaultMargin)
+            make.leading.equalToSuperview().offset(DefaultMargin)
+            make.trailing.equalToSuperview().offset(-DefaultMargin)
+            make.bottom.equalToSuperview().offset(-DefaultMargin)
         }
         
         vStack.translatesAutoresizingMaskIntoConstraints = false
@@ -75,15 +83,12 @@ class NFTDetailsViewController: UIViewController {
         vStack.distribution = .fill
         scrollView.addSubview(vStack)
         vStack.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview().offset(DefaultMargin)
-            make.bottom.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-DefaultMargin)
-            make.width.equalTo(self.view).offset(-2*DefaultMargin)
+            make.edges.equalToSuperview()
+            make.width.equalToSuperview()
         }
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .lightGray
+        imageView.backgroundColor = .clear
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.font = .systemFont(ofSize: 20)
@@ -107,43 +112,34 @@ class NFTDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let titleView = UILabel()
-        titleView.textColor = .black
-        titleView.text = model.collection
-        navigationItem.titleView = titleView
-        
-        title = model.collection
-        nameLabel.text = model.name
-        descriptionLabel.text = model.description
-        if let image_url = model.image_url, let imageURL = URL(string: image_url) {
-            imageView.sd_setImage(with: imageURL) { [weak self] image, error, _, _ in
-                guard let self = self else { return }
-                
-                if let image = image {
-                    let width = image.size.width
-                    let height = image.size.height
-                    if width > 0, height > 0 {
-                        self.imageView.snp.remakeConstraints { make in
-                            make.height.equalTo(self.imageView.snp.width).multipliedBy(height/width)
+        viewModel.modelCollection.bind(to: self.rx.title).disposed(by: disposeBag)
+        viewModel.modelName.bind(to: nameLabel.rx.text).disposed(by: disposeBag)
+        viewModel.modelDesciption.bind(to: descriptionLabel.rx.text).disposed(by: disposeBag)
+        viewModel.modelImageUrl.compactMap { $0 }.subscribe { [weak self] image_url in
+            guard let self = self else { return }
+            
+            if let imageURL = URL(string: image_url) {
+                self.imageView.sd_setImage(with: imageURL) { [weak self] image, error, _, _ in
+                    guard let self = self else { return }
+                    
+                    if let image = image {
+                        let width = image.size.width
+                        let height = image.size.height
+                        if width > 0, height > 0 {
+                            self.imageView.snp.remakeConstraints { make in
+                                make.height.equalTo(self.imageView.snp.width).multipliedBy(height/width)
+                            }
                         }
                     }
                 }
             }
-        }
-        
+        }.disposed(by: disposeBag)
     }
     
     private func openPermalink() {
-        if UIApplication.shared.canOpenURL(model.permalink()) {
-            UIApplication.shared.open(model.permalink())
+        if UIApplication.shared.canOpenURL(viewModel.permalink) {
+            UIApplication.shared.open(viewModel.permalink)
         }
     }
 
-}
-
-//
-private extension NFTInfoModel {
-    func permalink() -> URL {
-        return URL(string: "https://testnets.opensea.io/assets/goerli/\(contract)/\(identifier)")!
-    }
 }

@@ -23,6 +23,11 @@
 		BB9CBABC2AA234AA00B53981 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9CBABB2AA234AA00B53981 /* URLSessionHTTPClient.swift */; };
 		BB9CBAC52AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9CBAC42AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.swift */; };
 		BB9CBAC62AA235AB00B53981 /* OpenSeaNFTs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB04B42D2AA1CBFC0013D816 /* OpenSeaNFTs.framework */; };
+		BBF720EB2AA30A0B00AC5334 /* RemoteETHBalanceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF720EA2AA30A0B00AC5334 /* RemoteETHBalanceLoader.swift */; };
+		BBF720ED2AA3224B00AC5334 /* ETHBalanceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF720EC2AA3224B00AC5334 /* ETHBalanceLoader.swift */; };
+		BBF720EF2AA3229900AC5334 /* RemoteETHGetBalanceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF720EE2AA3229900AC5334 /* RemoteETHGetBalanceResponse.swift */; };
+		BBF720F12AA3237E00AC5334 /* LoadETHBalanceFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF720F02AA3237E00AC5334 /* LoadETHBalanceFromRemoteUseCaseTests.swift */; };
+		BBF720F32AA323F100AC5334 /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF720F22AA323F100AC5334 /* HTTPClientSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +68,11 @@
 		BB9CBAC22AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenSeaNFTsRemoteIntegrationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9CBAC42AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaNFTsRemoteIntegrationsTests.swift; sourceTree = "<group>"; };
 		BB9CBACC2AA239C700B53981 /* OpenSeaNFTsRemoteIntegration.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = OpenSeaNFTsRemoteIntegration.xctestplan; sourceTree = "<group>"; };
+		BBF720EA2AA30A0B00AC5334 /* RemoteETHBalanceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteETHBalanceLoader.swift; sourceTree = "<group>"; };
+		BBF720EC2AA3224B00AC5334 /* ETHBalanceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETHBalanceLoader.swift; sourceTree = "<group>"; };
+		BBF720EE2AA3229900AC5334 /* RemoteETHGetBalanceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteETHGetBalanceResponse.swift; sourceTree = "<group>"; };
+		BBF720F02AA3237E00AC5334 /* LoadETHBalanceFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadETHBalanceFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
+		BBF720F22AA323F100AC5334 /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +139,10 @@
 				BB9CBABD2AA2350300B53981 /* OpenSeaNFTs.xctestplan */,
 				BB1F9EC22AA230EC007DEB44 /* Helpers.swift */,
 				BB1F9EC42AA2312E007DEB44 /* XCTestCase+MemoryTracking.swift */,
-				BB04B4492AA1CD1A0013D816 /* LoadNFTsFromRemoteUseCaseTests.swift */,
 				BB1F9EBF2AA23041007DEB44 /* URLSessionHTTPClientTests.swift */,
+				BBF720F22AA323F100AC5334 /* HTTPClientSpy.swift */,
+				BB04B4492AA1CD1A0013D816 /* LoadNFTsFromRemoteUseCaseTests.swift */,
+				BBF720F02AA3237E00AC5334 /* LoadETHBalanceFromRemoteUseCaseTests.swift */,
 			);
 			path = OpenSeaNFTsTests;
 			sourceTree = "<group>";
@@ -140,6 +152,7 @@
 			children = (
 				BB04B4472AA1CC810013D816 /* NFTInfo.swift */,
 				BB1F9EB62AA22EA3007DEB44 /* NFTsLoader.swift */,
+				BBF720EC2AA3224B00AC5334 /* ETHBalanceLoader.swift */,
 				BB1F9EBE2AA22FEE007DEB44 /* Remote */,
 			);
 			path = Features;
@@ -149,10 +162,12 @@
 			isa = PBXGroup;
 			children = (
 				BB1F9EB42AA2175C007DEB44 /* HTTPClient.swift */,
-				BB1F9EB82AA22EDC007DEB44 /* RemoteNFTResponse.swift */,
-				BB1F9EBA2AA22EE9007DEB44 /* RemoteNFTInfo.swift */,
-				BB1F9EBC2AA22F51007DEB44 /* RemoteNFTsLoader.swift */,
 				BB9CBABB2AA234AA00B53981 /* URLSessionHTTPClient.swift */,
+				BB1F9EBA2AA22EE9007DEB44 /* RemoteNFTInfo.swift */,
+				BB1F9EB82AA22EDC007DEB44 /* RemoteNFTResponse.swift */,
+				BB1F9EBC2AA22F51007DEB44 /* RemoteNFTsLoader.swift */,
+				BBF720EE2AA3229900AC5334 /* RemoteETHGetBalanceResponse.swift */,
+				BBF720EA2AA30A0B00AC5334 /* RemoteETHBalanceLoader.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -308,7 +323,10 @@
 				BB04B4482AA1CC810013D816 /* NFTInfo.swift in Sources */,
 				BB1F9EB92AA22EDC007DEB44 /* RemoteNFTResponse.swift in Sources */,
 				BB1F9EBB2AA22EE9007DEB44 /* RemoteNFTInfo.swift in Sources */,
+				BBF720EB2AA30A0B00AC5334 /* RemoteETHBalanceLoader.swift in Sources */,
 				BB9CBABC2AA234AA00B53981 /* URLSessionHTTPClient.swift in Sources */,
+				BBF720EF2AA3229900AC5334 /* RemoteETHGetBalanceResponse.swift in Sources */,
+				BBF720ED2AA3224B00AC5334 /* ETHBalanceLoader.swift in Sources */,
 				BB1F9EB72AA22EA3007DEB44 /* NFTsLoader.swift in Sources */,
 				BB04B4322AA1CBFC0013D816 /* OpenSeaNFTs.docc in Sources */,
 				BB1F9EB52AA2175C007DEB44 /* HTTPClient.swift in Sources */,
@@ -321,7 +339,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB1F9EC52AA2312E007DEB44 /* XCTestCase+MemoryTracking.swift in Sources */,
+				BBF720F32AA323F100AC5334 /* HTTPClientSpy.swift in Sources */,
 				BB04B44A2AA1CD1A0013D816 /* LoadNFTsFromRemoteUseCaseTests.swift in Sources */,
+				BBF720F12AA3237E00AC5334 /* LoadETHBalanceFromRemoteUseCaseTests.swift in Sources */,
 				BB1F9EC32AA230EC007DEB44 /* Helpers.swift in Sources */,
 				BB1F9EC02AA23041007DEB44 /* URLSessionHTTPClientTests.swift in Sources */,
 			);

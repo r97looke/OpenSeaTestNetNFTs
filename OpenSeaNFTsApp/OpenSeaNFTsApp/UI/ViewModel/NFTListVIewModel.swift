@@ -9,31 +9,44 @@ import Foundation
 import OpenSeaNFTs
 import RxSwift
 import RxRelay
+import web3swift
+import Web3Core
+import BigInt
 
-class NFTListViewModel {
+final class NFTListViewModel {
     
-    private let loader: NFTsLoader
+    let title = "List"
     private var next: String?
     private var isRefresh = false
     private var isLoading = false
     private var isAllLoaded = false
     
+    private var models = [NFTInfoModel]()
+    
     // MARK: Output
     let isRefreshing = PublishRelay<Bool>()
     let isNextLoading = PublishRelay<Bool>()
-    let displayModels = BehaviorRelay<[NFTInfoModel]>(value: [])
-    
-    var models = [NFTInfoModel]()
+    let nftInfoModels = PublishRelay<[NFTInfoModel]>()
+    let ethBalanceModel = PublishRelay<String>()
     
     // MARK: Input
     let refreshModels = PublishRelay<Void>()
     let loadNextPageModels = PublishRelay<Void>()
+    let loadBalanceModel = PublishRelay<Void>()
     
     private let disposeBag = DisposeBag()
     
-    init(loader: NFTsLoader) {
+    private let loader: NFTsLoader
+    private let ethBalanceLoader: ETHBalanceLoader
+    
+    init(loader: NFTsLoader, ethBalanceLoader: ETHBalanceLoader) {
         self.loader = loader
-
+        self.ethBalanceLoader = ethBalanceLoader
+        
+        bind()
+    }
+    
+    private func bind() {
         refreshModels.subscribe { [weak self] _ in
             guard let self = self else { return }
             
@@ -45,19 +58,26 @@ class NFTListViewModel {
             
             self.loadNextPage()
         }.disposed(by: disposeBag)
+        
+        loadBalanceModel.subscribe { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.loadETHBalance()
+        }.disposed(by: disposeBag)
     }
     
-    typealias LoadCompletion = () -> Void
-    
-    func refresh() {
-        models.removeAll()
+    private func refresh() {
+        if isLoading {
+            return
+        }
+        
         next = nil
         isRefresh = true
         isAllLoaded = false
         loadNextPage()
     }
     
-    func loadNextPage() {
+    private func loadNextPage() {
         if isAllLoaded {
             return
         }
@@ -74,14 +94,17 @@ class NFTListViewModel {
             isNextLoading.accept(true)
         }
         
+        let beforeLoadNext = next
         loader.load(next: next) { [weak self] result in
             guard let self = self else { return }
             
+            var success = false
             var loadedModels = [NFTInfoModel]()
-            var loadedNext: String? = nil
+            var loadedNext: String? = beforeLoadNext
             
             switch result {
             case let .success((nfts, next)):
+                success = true
                 loadedModels = nfts.map{ $0.toModel() }
                 loadedNext = next
                 
@@ -92,10 +115,19 @@ class NFTListViewModel {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 
-                self.models.append(contentsOf: loadedModels)
-                displayModels.accept(self.models)
+                if (self.isRefresh) {
+                    self.models.removeAll()
+                }
                 
-                if loadedNext == nil {
+                if success {
+                    self.models.append(contentsOf: loadedModels)
+                    nftInfoModels.accept(self.models)
+                }
+                else if self.models.isEmpty {
+                    nftInfoModels.accept(self.models)
+                }
+                
+                if success, loadedNext == nil {
                     self.isAllLoaded = true
                 }
                 self.next = loadedNext
@@ -112,7 +144,22 @@ class NFTListViewModel {
         }
     }
     
-    let title = "List"
+    private func loadETHBalance() {
+        ethBalanceLoader.load { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case let .success(balanceString):
+                if let value = BigUInt(from: balanceString) {
+                    let balanceDisplayText = Utilities.formatToPrecision(value, formattingDecimals: 18)
+                    self.ethBalanceModel.accept("\(balanceDisplayText) ETH")
+                }
+                
+            default:
+                break
+            }
+        }
+    }
 }
 
 private extension NFTInfo {

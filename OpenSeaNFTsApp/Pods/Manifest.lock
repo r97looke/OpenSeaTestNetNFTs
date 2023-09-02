@@ -1,4 +1,6 @@
 PODS:
+  - BigInt (5.2.0)
+  - CryptoSwift (1.5.1)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
@@ -10,7 +12,16 @@ PODS:
   - SDWebImage/Core (5.17.0)
   - SDWebImageSVGCoder (1.7.0):
     - SDWebImage/Core (~> 5.6)
+  - secp256k1.c (0.1.2)
   - SnapKit (5.0.1)
+  - Starscream (4.0.4)
+  - Web3Core (3.1.2):
+    - BigInt (~> 5.2.0)
+    - CryptoSwift (~> 1.5.1)
+    - secp256k1.c (~> 0.1)
+  - web3swift (3.1.2):
+    - Starscream (~> 4.0.4)
+    - Web3Core (~> 3.1.2)
 
 DEPENDENCIES:
   - RxCocoa (= 6.5.0)
@@ -18,24 +29,37 @@ DEPENDENCIES:
   - SDWebImage (~> 5.0)
   - SDWebImageSVGCoder
   - SnapKit (~> 5.0.0)
+  - web3swift
 
 SPEC REPOS:
   trunk:
+    - BigInt
+    - CryptoSwift
     - RxCocoa
     - RxRelay
     - RxSwift
     - SDWebImage
     - SDWebImageSVGCoder
+    - secp256k1.c
     - SnapKit
+    - Starscream
+    - Web3Core
+    - web3swift
 
 SPEC CHECKSUMS:
+  BigInt: f668a80089607f521586bbe29513d708491ef2f7
+  CryptoSwift: c4f2debceb38bf44c80659afe009f71e23e4a082
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SDWebImage: 750adf017a315a280c60fde706ab1e552a3ae4e9
   SDWebImageSVGCoder: 15a300a97ec1c8ac958f009c02220ac0402e936c
+  secp256k1.c: db47b726585d80f027423682eb369729e61b3b20
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
+  Web3Core: 050eb18f0434ac16c42eb7b2270fbce325935128
+  web3swift: 8496f6615c3a1f86e7c9e5fe16c5422ef181527b
 
-PODFILE CHECKSUM: 98fde8c26d4e127fa5d7d96cd39434e51e338464
+PODFILE CHECKSUM: 2f6cc812530c050ad06987fd4f9f9ed74ef44e10
 
 COCOAPODS: 1.12.1

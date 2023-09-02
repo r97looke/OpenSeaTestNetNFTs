@@ -24,11 +24,7 @@ public class RemoteNFTsLoader: NFTsLoader {
     public func load(next: String? = nil, completion: @escaping (LoadResult) -> Void) {
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
         if let next = next {
-            urlComponents.queryItems = [URLQueryItem(name: "limit", value: "20"),
-                                        URLQueryItem(name: "next", value: next)]
-        }
-        else {
-            urlComponents.queryItems = [URLQueryItem(name: "limit", value: "20")]
+            urlComponents.queryItems!.append(URLQueryItem(name: "next", value: next))
         }
         
         let updatedURL = urlComponents.url!

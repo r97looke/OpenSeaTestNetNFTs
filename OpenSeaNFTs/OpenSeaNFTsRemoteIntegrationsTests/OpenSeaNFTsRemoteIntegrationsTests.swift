@@ -33,6 +33,28 @@ final class OpenSeaNFTsRemoteIntegrationsTests: XCTestCase {
         wait(for: [exp], timeout: 5.0)
     }
     
+    func test_load_ETHBalance() {
+        let url = testETHBalanceEndpointURL()
+        let session = URLSession(configuration: .ephemeral)
+        let client = URLSessionHTTPClient(session: session)
+        let loader = RemoteETHBalanceLoader(url: url, address: account(), client: client)
+        
+        let exp = expectation(description: "Wait loader to complete")
+        loader.load { result in
+            switch result {
+            case let .success((balance)):
+                XCTAssertNotNil(balance)
+                
+            default:
+                XCTFail("Expect success, got \(result) instead")
+            }
+            
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 5.0)
+    }
+    
     // MARK: Helpers
     private func chain() -> String {
         return "goerli"
@@ -55,6 +77,10 @@ final class OpenSeaNFTsRemoteIntegrationsTests: XCTestCase {
             .appendingPathComponent(account())
             .appendingPathComponent("nfts")
             .appending(queryItems: queryItem)
+    }
+    
+    private func testETHBalanceEndpointURL() -> URL {
+        return URL(string: "https://ethereum-goerli-rpc.allthatnode.com")!
     }
 
 }

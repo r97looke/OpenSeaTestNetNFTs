@@ -36,8 +36,12 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversErrorOnNon200HTTPResponse() {
         let (client, sut) = makeSUT(anyURL())
         
-        expect(sut, toCompleteWith: .failure(RemoteNFTsLoader.LoadError.invalidData)) {
-            client.completeWith(statusCode: 199, data: Data())
+        let sample = [100, 199, 201, 300, 400, 500]
+        
+        for (index, code) in sample.enumerated() {
+            expect(sut, toCompleteWith: .failure(RemoteNFTsLoader.LoadError.invalidData)) {
+                client.completeWith(statusCode: code, data: Data(), at: index)
+            }
         }
     }
     
@@ -49,7 +53,7 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
         }
     }
     
-    func test_load_deliversErrorOn200HTTPResponseWithInEmptyData() {
+    func test_load_deliversErrorOn200HTTPResponseWithEmptyData() {
         let (client, sut) = makeSUT(anyURL())
         
         expect(sut, toCompleteWith: .failure(RemoteNFTsLoader.LoadError.invalidData)) {
@@ -61,7 +65,7 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
         let expectedNFTs = testNFTs()
         let (client, sut) = makeSUT(anyURL())
         
-        expect(sut, toCompleteWith: .success(expectedNFTs)) {
+        expect(sut, toCompleteWith: .success((expectedNFTs, nil))) {
             client.completeWith(statusCode: 200, data: makeNFTsJSON(expectedNFTs))
         }
     }
@@ -94,7 +98,7 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
         let exp = expectation(description: "Wait load to complete")
         sut.load { receivedResult in
             switch (receivedResult, expectedResult) {
-            case let (.success(receivedNFTs), .success(expectedNFTs)):
+            case let (.success((receivedNFTs, _)), .success((expectedNFTs, _))):
                 XCTAssertEqual(receivedNFTs, expectedNFTs, file: file, line: line)
                 break
                 
@@ -111,24 +115,6 @@ final class LoadNFTsFromRemoteUseCaseTests: XCTestCase {
         action()
         
         wait(for: [exp], timeout: 1.0)
-    }
-    
-    private class HTTPClientSpy: HTTPClient {
-        var requestURLs = [URL]()
-        var completions = [(GETResult) -> Void]()
-        
-        func get(from url: URL, completion: @escaping (GETResult) -> Void) {
-            requestURLs.append(url)
-            completions.append(completion)
-        }
-        
-        func completeWith(error: Error, at index: Int = 0) {
-            completions[index](.failure(error))
-        }
-        
-        func completeWith(statusCode: Int, data: Data, at index: Int = 0) {
-            completions[index](.success((data, HTTPURLResponse(url: requestURLs[index], statusCode: statusCode, httpVersion: nil, headerFields: nil)!)))
-        }
     }
     
     private func testNFT() -> NFTInfo {
@@ -175,11 +161,20 @@ private extension NFTInfo {
 
 private extension RemoteNFTInfo {
     func json() -> [String : Any] {
-        return ["identifier" : identifier,
-                "collection" : collection,
-                "contract" : contract,
-                "name" : name,
-                "description" : description,
-                "image_url" : image_url]
+        if let image_url = image_url {
+            return ["identifier" : identifier,
+                    "collection" : collection,
+                    "contract" : contract,
+                    "name" : name,
+                    "description" : description,
+                    "image_url" : image_url]
+        }
+        else {
+            return ["identifier" : identifier,
+                    "collection" : collection,
+                    "contract" : contract,
+                    "name" : name,
+                    "description" : description]
+        }
     }
 }

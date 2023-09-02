@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import SDWebImage
 
-class NFTInfoCell: UICollectionViewCell {
+final class NFTInfoCell: UICollectionViewCell {
     
     static let DefaultSize = CGSize(width: 176, height: 208)
     
@@ -17,22 +17,22 @@ class NFTInfoCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let DefaultSpace: CGFloat = 8.0
+    private let DefaultSpace: CGFloat = 8.0
     
-    let imageView = UIImageView()
-    let nameLabel = UILabel()
+    private let imageView = UIImageView()
+    private let nameLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundView = nil
         backgroundColor = .clear
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .clear
         contentView.layer.cornerRadius = 8.0
         contentView.layer.borderWidth = 1.0
         contentView.layer.borderColor = UIColor.blue.cgColor
         
-        imageView.backgroundColor = .lightGray
+        imageView.backgroundColor = .clear
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
@@ -44,7 +44,6 @@ class NFTInfoCell: UICollectionViewCell {
         
         contentView.addSubview(imageView)
         contentView.addSubview(nameLabel)
-        
         
         imageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(DefaultSpace)

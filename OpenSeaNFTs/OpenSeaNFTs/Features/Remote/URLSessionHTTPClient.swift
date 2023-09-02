@@ -29,4 +29,22 @@ public class URLSessionHTTPClient: HTTPClient {
             }
         }.resume()
     }
+    
+    public func post(to url: URL, data: Data, completion: @escaping (POSTResult) -> Void) {
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = data
+        session.dataTask(with: request) { data, response, error in
+            if let clientError = error {
+                completion(.failure(clientError))
+            }
+            else if let data = data, let httpURLResponse = response as? HTTPURLResponse {
+                completion(.success((data, httpURLResponse)))
+            }
+            else {
+                completion(.failure(InvalidDataResponseErrorCombination()))
+            }
+        }.resume()
+    }
 }
