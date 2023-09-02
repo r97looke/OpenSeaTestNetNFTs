@@ -15,6 +15,15 @@ final class LoadETHBalanceFromRemoteUseCaseTests: XCTestCase {
         
         XCTAssertEqual(client.postRequestURLs, [])
     }
+    
+    func test_load_doesPostDataToURL() {
+        let url = anyURL()
+        let (client, sut) = makeSUT(url)
+        
+        sut.loadETHBalance() { _ in }
+        
+        XCTAssertEqual(client.postRequestURLs, [url])
+    }
 
     // MARK: Helpers
     private func makeSUT(_ url: URL, file: StaticString = #filePath, line: UInt = #line) -> (client: HTTPClientSpy, sut: RemoteETHBalanceLoader) {
