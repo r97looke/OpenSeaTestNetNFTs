@@ -10,10 +10,13 @@ import OpenSeaNFTs
 import RxSwift
 import RxRelay
 import web3swift
+import Web3Core
+import BigInt
 
 class NFTListViewModel {
     
     private let loader: NFTsLoader
+    private let ethBalanceLoader: ETHBalanceLoader
     private var next: String?
     private var isRefresh = false
     private var isLoading = false
@@ -23,6 +26,7 @@ class NFTListViewModel {
     let isRefreshing = PublishRelay<Bool>()
     let isNextLoading = PublishRelay<Bool>()
     let displayModels = BehaviorRelay<[NFTInfoModel]>(value: [])
+    let ethBalanceModel = PublishRelay<String>()
     
     var models = [NFTInfoModel]()
     
@@ -33,8 +37,9 @@ class NFTListViewModel {
     
     private let disposeBag = DisposeBag()
     
-    init(loader: NFTsLoader) {
+    init(loader: NFTsLoader, ethBalanceLoader: ETHBalanceLoader) {
         self.loader = loader
+        self.ethBalanceLoader = ethBalanceLoader
 
         refreshModels.subscribe { [weak self] _ in
             guard let self = self else { return }
@@ -51,7 +56,7 @@ class NFTListViewModel {
         loadBalanceModel.subscribe { [weak self] _ in
             guard let self = self else { return }
             
-            self.loadBalance()
+            self.loadETHBalance()
         }.disposed(by: disposeBag)
     }
     
@@ -120,7 +125,21 @@ class NFTListViewModel {
         }
     }
     
-    func loadBalance() {
+    func loadETHBalance() {
+        ethBalanceLoader.loadETHBalance { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case let .success(balanceString):
+                if let value = BigUInt(from: balanceString) {
+                    let balanceDisplayText = Utilities.formatToPrecision(value, formattingDecimals: 18)
+                    self.ethBalanceModel.accept("\(balanceDisplayText) ETH")
+                }
+                
+            default:
+                break
+            }
+        }
     }
     
     let title = "List"

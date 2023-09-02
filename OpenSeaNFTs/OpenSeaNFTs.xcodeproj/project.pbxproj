@@ -23,6 +23,7 @@
 		BB9CBABC2AA234AA00B53981 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9CBABB2AA234AA00B53981 /* URLSessionHTTPClient.swift */; };
 		BB9CBAC52AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9CBAC42AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.swift */; };
 		BB9CBAC62AA235AB00B53981 /* OpenSeaNFTs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB04B42D2AA1CBFC0013D816 /* OpenSeaNFTs.framework */; };
+		BBF720EB2AA30A0B00AC5334 /* RemoteETHBalanceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF720EA2AA30A0B00AC5334 /* RemoteETHBalanceLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		BB9CBAC22AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenSeaNFTsRemoteIntegrationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9CBAC42AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaNFTsRemoteIntegrationsTests.swift; sourceTree = "<group>"; };
 		BB9CBACC2AA239C700B53981 /* OpenSeaNFTsRemoteIntegration.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = OpenSeaNFTsRemoteIntegration.xctestplan; sourceTree = "<group>"; };
+		BBF720EA2AA30A0B00AC5334 /* RemoteETHBalanceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteETHBalanceLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				BB1F9EBA2AA22EE9007DEB44 /* RemoteNFTInfo.swift */,
 				BB1F9EBC2AA22F51007DEB44 /* RemoteNFTsLoader.swift */,
 				BB9CBABB2AA234AA00B53981 /* URLSessionHTTPClient.swift */,
+				BBF720EA2AA30A0B00AC5334 /* RemoteETHBalanceLoader.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				BB04B4482AA1CC810013D816 /* NFTInfo.swift in Sources */,
 				BB1F9EB92AA22EDC007DEB44 /* RemoteNFTResponse.swift in Sources */,
 				BB1F9EBB2AA22EE9007DEB44 /* RemoteNFTInfo.swift in Sources */,
+				BBF720EB2AA30A0B00AC5334 /* RemoteETHBalanceLoader.swift in Sources */,
 				BB9CBABC2AA234AA00B53981 /* URLSessionHTTPClient.swift in Sources */,
 				BB1F9EB72AA22EA3007DEB44 /* NFTsLoader.swift in Sources */,
 				BB04B4322AA1CBFC0013D816 /* OpenSeaNFTs.docc in Sources */,

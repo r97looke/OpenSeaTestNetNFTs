@@ -76,10 +76,7 @@ final class NFTListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let titleView = UILabel()
-        titleView.textColor = .black
-        titleView.text = viewModel.title
-        navigationItem.titleView = titleView
+        viewModel.ethBalanceModel.bind(to: self.rx.title).disposed(by: disposeBag)
         
         viewModel.isRefreshing.bind(to: refreshView.rx.isAnimating).disposed(by: disposeBag)
         viewModel.isNextLoading.bind(to: loadingView.rx.isAnimating).disposed(by: disposeBag)

@@ -11,4 +11,8 @@ public protocol HTTPClient {
     typealias GETResult = Swift.Result<(Data, HTTPURLResponse), Error>
     
     func get(from url: URL, completion: @escaping (GETResult) -> Void)
+    
+    typealias POSTResult = Swift.Result<(Data, HTTPURLResponse), Error>
+    
+    func post(to url: URL, data: Data, completion: @escaping (POSTResult) -> Void)
 }

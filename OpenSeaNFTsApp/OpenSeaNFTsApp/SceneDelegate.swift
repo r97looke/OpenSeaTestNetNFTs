@@ -14,7 +14,7 @@ struct OpenSeaNFTsAppSettings {
         return "goerli"
     }
     
-    private static func account() -> String {
+    static func account() -> String {
         return "0x85fD692D2a075908079261F5E351e7fE0267dB02"
     }
     
@@ -30,6 +30,11 @@ struct OpenSeaNFTsAppSettings {
             .appendingPathComponent(account())
             .appendingPathComponent("nfts")
     }
+    
+    static func ethBalanceEndpointURL() -> URL {
+        return URL(string: "https://ethereum-goerli-rpc.allthatnode.com")!
+    }
+
 }
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -48,7 +53,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let url = OpenSeaNFTsAppSettings.nftsEndpointURL()
         let client = URLSessionHTTPClient()
         let loader = RemoteNFTsLoader(url: url, client: client)
-        let viewModel = NFTListViewModel(loader: loader)
+        let ethBalanceURL = OpenSeaNFTsAppSettings.ethBalanceEndpointURL()
+        let ethBalanceLoader = RemoteETHBalanceLoader(url: ethBalanceURL,
+                                                      address:  OpenSeaNFTsAppSettings.account(),
+                                                      client: client)
+        let viewModel = NFTListViewModel(loader: loader, ethBalanceLoader: ethBalanceLoader)
         let viewController = NFTListViewController(viewModel: viewModel)
         let navigationViewController = UINavigationController(rootViewController: viewController)
         window?.rootViewController = navigationViewController
