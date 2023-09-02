@@ -161,7 +161,8 @@ final class NFTListViewController: UIViewController {
     }
     
     private func showDetail(_ model: NFTInfoModel) {
-        let detailVC = NFTDetailsViewController(model: model)
+        let detailViewModel = NFTDetailsViewModel(model: model)
+        let detailVC = NFTDetailsViewController(viewModel: detailViewModel)
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

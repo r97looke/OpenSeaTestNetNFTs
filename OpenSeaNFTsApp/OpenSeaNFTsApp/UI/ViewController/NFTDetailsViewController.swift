@@ -17,11 +17,11 @@ final class NFTDetailsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let model: NFTInfoModel
+    private let viewModel: NFTDetailsViewModel
     private let disposeBag = DisposeBag()
     
-    init(model: NFTInfoModel) {
-        self.model = model
+    init(viewModel: NFTDetailsViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -112,37 +112,34 @@ final class NFTDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = model.collection
-        nameLabel.text = model.name
-        descriptionLabel.text = model.description
-        if let image_url = model.image_url, let imageURL = URL(string: image_url) {
-            imageView.sd_setImage(with: imageURL) { [weak self] image, error, _, _ in
-                guard let self = self else { return }
-                
-                if let image = image {
-                    let width = image.size.width
-                    let height = image.size.height
-                    if width > 0, height > 0 {
-                        self.imageView.snp.remakeConstraints { make in
-                            make.height.equalTo(self.imageView.snp.width).multipliedBy(height/width)
+        viewModel.modelCollection.bind(to: self.rx.title).disposed(by: disposeBag)
+        viewModel.modelName.bind(to: nameLabel.rx.text).disposed(by: disposeBag)
+        viewModel.modelDesciption.bind(to: descriptionLabel.rx.text).disposed(by: disposeBag)
+        viewModel.modelImageUrl.compactMap { $0 }.subscribe { [weak self] image_url in
+            guard let self = self else { return }
+            
+            if let imageURL = URL(string: image_url) {
+                self.imageView.sd_setImage(with: imageURL) { [weak self] image, error, _, _ in
+                    guard let self = self else { return }
+                    
+                    if let image = image {
+                        let width = image.size.width
+                        let height = image.size.height
+                        if width > 0, height > 0 {
+                            self.imageView.snp.remakeConstraints { make in
+                                make.height.equalTo(self.imageView.snp.width).multipliedBy(height/width)
+                            }
                         }
                     }
                 }
             }
-        }
+        }.disposed(by: disposeBag)
     }
     
     private func openPermalink() {
-        if UIApplication.shared.canOpenURL(model.permalink()) {
-            UIApplication.shared.open(model.permalink())
+        if UIApplication.shared.canOpenURL(viewModel.permalink) {
+            UIApplication.shared.open(viewModel.permalink)
         }
     }
 
-}
-
-// MARK: Helpers
-private extension NFTInfoModel {
-    func permalink() -> URL {
-        return URL(string: "https://testnets.opensea.io/assets/goerli/\(contract)/\(identifier)")!
-    }
 }
