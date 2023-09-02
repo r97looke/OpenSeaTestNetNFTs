@@ -28,6 +28,7 @@ class NFTDetailsViewController: UIViewController {
     let DefaultMargin = 16.0
     let DefaultSpace = 8.0
     
+    let safeAreaView = UIView()
     let scrollView = UIScrollView()
     let vStack = UIStackView()
     let imageView = UIImageView()
@@ -41,6 +42,12 @@ class NFTDetailsViewController: UIViewController {
         
         view.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
         
+        safeAreaView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(safeAreaView)
+        safeAreaView.snp.makeConstraints { make in
+            make.edges.equalTo(self.view.safeAreaLayoutGuide)
+        }
+        
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.isDirectionalLockEnabled = true
         
@@ -53,19 +60,20 @@ class NFTDetailsViewController: UIViewController {
             self.openPermalink()
         }.disposed(by: disposeBag)
         
-        view.addSubview(scrollView)
-        view.addSubview(permalinkButton)
+        safeAreaView.addSubview(scrollView)
+        safeAreaView.addSubview(permalinkButton)
         
         scrollView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.width.equalToSuperview()
+            make.top.equalToSuperview().offset(DefaultMargin)
+            make.leading.equalToSuperview().offset(DefaultMargin)
+            make.trailing.equalToSuperview().offset(-DefaultMargin)
         }
         
         permalinkButton.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.bottom).offset(DefaultSpace)
-            make.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading).offset(DefaultMargin)
-            make.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing).offset(-DefaultMargin)
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-DefaultMargin)
+            make.leading.equalToSuperview().offset(DefaultMargin)
+            make.trailing.equalToSuperview().offset(-DefaultMargin)
+            make.bottom.equalToSuperview().offset(-DefaultMargin)
         }
         
         vStack.translatesAutoresizingMaskIntoConstraints = false
@@ -75,11 +83,8 @@ class NFTDetailsViewController: UIViewController {
         vStack.distribution = .fill
         scrollView.addSubview(vStack)
         vStack.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview().offset(DefaultMargin)
-            make.bottom.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-DefaultMargin)
-            make.width.equalTo(self.view).offset(-2*DefaultMargin)
+            make.edges.equalToSuperview()
+            make.width.equalToSuperview()
         }
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
