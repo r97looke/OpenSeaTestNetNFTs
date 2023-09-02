@@ -18,6 +18,7 @@ final class NFTListViewController: UIViewController {
     
     private let viewModel: NFTListViewModel
     private let disposeBag = DisposeBag()
+    private var becomeActiveDisposable: Disposable?
     
     init(viewModel: NFTListViewModel) {
         self.viewModel = viewModel
@@ -122,6 +123,24 @@ final class NFTListViewController: UIViewController {
         
         loadBalance()
         refresh()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        becomeActiveDisposable = NotificationCenter.default.rx.notification(UIApplication.didBecomeActiveNotification)
+            .subscribe(onNext: { [weak self] _ in
+            self?.loadBalance()
+            self?.refresh()
+        })
+        becomeActiveDisposable?.disposed(by: disposeBag)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        becomeActiveDisposable?.dispose()
+        becomeActiveDisposable = nil
     }
     
     private func loadBalance() {
