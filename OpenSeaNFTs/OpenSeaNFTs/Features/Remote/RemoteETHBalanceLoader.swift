@@ -13,12 +13,6 @@ struct RemoteETHGetBalanceResponse: Codable {
     let result: String
 }
 
-public protocol ETHBalanceLoader {
-    typealias LoadResult = Swift.Result<String, Error>
-    
-    func loadETHBalance(completion: @escaping (LoadResult) -> Void)
-}
-
 public class RemoteETHBalanceLoader: ETHBalanceLoader {
     enum LoadError: Swift.Error {
         case connectivity

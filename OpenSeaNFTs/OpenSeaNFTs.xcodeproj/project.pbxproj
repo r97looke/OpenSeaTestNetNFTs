@@ -24,6 +24,7 @@
 		BB9CBAC52AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9CBAC42AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.swift */; };
 		BB9CBAC62AA235AB00B53981 /* OpenSeaNFTs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB04B42D2AA1CBFC0013D816 /* OpenSeaNFTs.framework */; };
 		BBF720EB2AA30A0B00AC5334 /* RemoteETHBalanceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF720EA2AA30A0B00AC5334 /* RemoteETHBalanceLoader.swift */; };
+		BBF720ED2AA3224B00AC5334 /* ETHBalanceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF720EC2AA3224B00AC5334 /* ETHBalanceLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		BB9CBAC42AA235AB00B53981 /* OpenSeaNFTsRemoteIntegrationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaNFTsRemoteIntegrationsTests.swift; sourceTree = "<group>"; };
 		BB9CBACC2AA239C700B53981 /* OpenSeaNFTsRemoteIntegration.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = OpenSeaNFTsRemoteIntegration.xctestplan; sourceTree = "<group>"; };
 		BBF720EA2AA30A0B00AC5334 /* RemoteETHBalanceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteETHBalanceLoader.swift; sourceTree = "<group>"; };
+		BBF720EC2AA3224B00AC5334 /* ETHBalanceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETHBalanceLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			children = (
 				BB04B4472AA1CC810013D816 /* NFTInfo.swift */,
 				BB1F9EB62AA22EA3007DEB44 /* NFTsLoader.swift */,
+				BBF720EC2AA3224B00AC5334 /* ETHBalanceLoader.swift */,
 				BB1F9EBE2AA22FEE007DEB44 /* Remote */,
 			);
 			path = Features;
@@ -313,6 +316,7 @@
 				BB1F9EBB2AA22EE9007DEB44 /* RemoteNFTInfo.swift in Sources */,
 				BBF720EB2AA30A0B00AC5334 /* RemoteETHBalanceLoader.swift in Sources */,
 				BB9CBABC2AA234AA00B53981 /* URLSessionHTTPClient.swift in Sources */,
+				BBF720ED2AA3224B00AC5334 /* ETHBalanceLoader.swift in Sources */,
 				BB1F9EB72AA22EA3007DEB44 /* NFTsLoader.swift in Sources */,
 				BB04B4322AA1CBFC0013D816 /* OpenSeaNFTs.docc in Sources */,
 				BB1F9EB52AA2175C007DEB44 /* HTTPClient.swift in Sources */,
