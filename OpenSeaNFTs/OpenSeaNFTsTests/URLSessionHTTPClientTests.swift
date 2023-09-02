@@ -170,6 +170,18 @@ final class URLSessionHTTPClientTests: XCTestCase {
         XCTAssertEqual(receivedResponse?.statusCode, httpURLResponse.statusCode)
     }
     
+    func test_postToURL_succeedsOnHTTPResponseWithData() {
+        let url = anyURL()
+        let data = anyData()
+        let httpURLResponse = anyHTTPURLResponse(url, statusCode: 200)
+        let sut = makeSUT()
+        
+        let (receivedData, receivedResponse) = postResultValues(sut, url: url, data: data, response: httpURLResponse, error: nil)
+        XCTAssertEqual(receivedData, data)
+        XCTAssertEqual(receivedResponse?.url, httpURLResponse.url)
+        XCTAssertEqual(receivedResponse?.statusCode, httpURLResponse.statusCode)
+    }
+    
     // MARK: Helpers
     private func makeSUT() -> URLSessionHTTPClient {
         let sut = URLSessionHTTPClient()
