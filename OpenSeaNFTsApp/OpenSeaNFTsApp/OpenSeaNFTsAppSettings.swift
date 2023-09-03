@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct OpenSeaNFTsAppSettings {
+final class OpenSeaNFTsAppSettings {
+    private init() { }
     
     private static func chain() -> String {
         return "goerli"
@@ -33,6 +34,10 @@ struct OpenSeaNFTsAppSettings {
     
     static func ethBalanceEndpointURL() -> URL {
         return URL(string: "https://ethereum-goerli-rpc.allthatnode.com")!
+    }
+    
+    static func permalinkBase() -> String {
+        return "https://testnets.opensea.io/assets/goerli"
     }
 
 }

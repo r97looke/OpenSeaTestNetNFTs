@@ -12,7 +12,7 @@ import RxRelay
 
 struct NFTDetailsViewModel {
     
-    private let model: NFTInfoModel
+    let model: NFTInfoModel
     
     let modelCollection: BehaviorRelay<String>
     let modelName: BehaviorRelay<String>
@@ -26,9 +26,5 @@ struct NFTDetailsViewModel {
         modelName = BehaviorRelay(value: model.name)
         modelDesciption = BehaviorRelay(value: model.description)
         modelImageUrl = BehaviorRelay(value: model.image_url)
-    }
-    
-    var permalink: URL {
-        return URL(string: "https://testnets.opensea.io/assets/goerli/\(model.contract)/\(model.identifier)")!
     }
 }
