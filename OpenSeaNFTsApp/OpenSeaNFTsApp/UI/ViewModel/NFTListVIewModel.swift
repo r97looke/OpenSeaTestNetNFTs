@@ -9,6 +9,7 @@ import Foundation
 import OpenSeaNFTs
 import RxSwift
 import RxRelay
+import RxCocoa
 import web3swift
 import Web3Core
 import BigInt
@@ -27,6 +28,7 @@ final class NFTListViewModel {
     let isRefreshing = PublishRelay<Bool>()
     let isNextLoading = PublishRelay<Bool>()
     let nftInfoModels = PublishRelay<[NFTInfoModel]>()
+    let isListEmpty = PublishRelay<Bool>()
     let ethBalanceModel = PublishRelay<String>()
     
     // MARK: Input
@@ -126,6 +128,7 @@ final class NFTListViewModel {
                 else if self.models.isEmpty {
                     nftInfoModels.accept(self.models)
                 }
+                isListEmpty.accept(self.models.isEmpty)
                 
                 if success, loadedNext == nil {
                     self.isAllLoaded = true

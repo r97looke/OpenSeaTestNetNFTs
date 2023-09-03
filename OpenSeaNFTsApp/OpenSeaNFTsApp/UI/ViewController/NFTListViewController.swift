@@ -19,7 +19,7 @@ final class NFTListViewController: UIViewController {
     private let viewModel: NFTListViewModel
     private let selection: (NFTInfoModel) -> Void
     private let disposeBag = DisposeBag()
-    private var becomeActiveDisposable: Disposable?
+    private let viewWillDisappearPublishRelay = PublishRelay<Void>()
     
     init(viewModel: NFTListViewModel, selection: @escaping (NFTInfoModel) -> Void) {
         self.viewModel = viewModel
@@ -120,8 +120,7 @@ final class NFTListViewController: UIViewController {
             self.selection(model)
         }.disposed(by: disposeBag)
         
-        viewModel.nftInfoModels.map { !$0.isEmpty }.bind(to: emptyLabel.rx.isHidden)
-            .disposed(by: disposeBag)
+        viewModel.isListEmpty.map{ !$0 }.bind(to: emptyLabel.rx.isHidden).disposed(by: disposeBag)
         
         loadBalance()
         refresh()
@@ -130,21 +129,21 @@ final class NFTListViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        becomeActiveDisposable = NotificationCenter.default.rx.notification(UIApplication.didBecomeActiveNotification)
+        NotificationCenter.default.rx.notification(UIApplication.didBecomeActiveNotification)
+            .take(until: viewWillDisappearPublishRelay)
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 
                 self.loadBalance()
                 self.refresh()
-        })
-        becomeActiveDisposable?.disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        becomeActiveDisposable?.dispose()
-        becomeActiveDisposable = nil
+        viewWillDisappearPublishRelay.accept(Void())        
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

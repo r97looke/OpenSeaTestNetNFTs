@@ -47,8 +47,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func showDetail(_ model: NFTInfoModel) {
-        let detailVC = NFTDetailComposer.compose(model: model)
+        let detailVC = NFTDetailComposer.compose(model: model, permalinkSelection: openPermalink)
         navigationController.pushViewController(detailVC, animated: true)
+    }
+    
+    private func openPermalink(_ model: NFTInfoModel) {
+        if UIApplication.shared.canOpenURL(model.permalinkURL) {
+            UIApplication.shared.open(model.permalinkURL)
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -77,6 +83,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+    }
+}
+
+// MARK: Helpers
+private extension NFTInfoModel {
+    var permalinkURL: URL {
+        return URL(string: "\(OpenSeaNFTsAppSettings.permalinkBase())/\(contract)/\(identifier)")!
     }
 }
 

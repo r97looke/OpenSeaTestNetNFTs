@@ -18,10 +18,12 @@ final class NFTDetailsViewController: UIViewController {
     }
     
     private let viewModel: NFTDetailsViewModel
+    private let permalinkSelection: (NFTInfoModel) -> Void
     private let disposeBag = DisposeBag()
     
-    init(viewModel: NFTDetailsViewModel) {
+    init(viewModel: NFTDetailsViewModel, permalinkSelection: @escaping (NFTInfoModel) -> Void) {
         self.viewModel = viewModel
+        self.permalinkSelection = permalinkSelection
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -54,11 +56,6 @@ final class NFTDetailsViewController: UIViewController {
         permalinkButton.translatesAutoresizingMaskIntoConstraints = false
         permalinkButton.setTitle("permalink", for: .normal)
         permalinkButton.setTitleColor(.blue, for: .normal)
-        permalinkButton.rx.tap.subscribe { [weak self] _ in
-            guard let self = self else { return }
-            
-            self.openPermalink()
-        }.disposed(by: disposeBag)
         
         safeAreaView.addSubview(scrollView)
         safeAreaView.addSubview(permalinkButton)
@@ -134,12 +131,12 @@ final class NFTDetailsViewController: UIViewController {
                 }
             }
         }.disposed(by: disposeBag)
-    }
-    
-    private func openPermalink() {
-        if UIApplication.shared.canOpenURL(viewModel.permalink) {
-            UIApplication.shared.open(viewModel.permalink)
-        }
+        
+        permalinkButton.rx.tap.subscribe { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.permalinkSelection(viewModel.model)
+        }.disposed(by: disposeBag)
     }
 
 }

@@ -10,9 +10,10 @@ import Foundation
 final class NFTDetailComposer {
     private init() { }
     
-    static func compose(model: NFTInfoModel) -> NFTDetailsViewController {
+    static func compose(model: NFTInfoModel, permalinkSelection: @escaping (NFTInfoModel) -> Void) -> NFTDetailsViewController {
         let viewModel = NFTDetailsViewModel(model: model)
-        let viewController = NFTDetailsViewController(viewModel: viewModel)
+        let viewController = NFTDetailsViewController(viewModel: viewModel,
+                                                      permalinkSelection: permalinkSelection)
         return viewController
     }
 }
