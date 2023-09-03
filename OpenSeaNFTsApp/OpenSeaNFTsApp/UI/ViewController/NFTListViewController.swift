@@ -120,8 +120,7 @@ final class NFTListViewController: UIViewController {
             self.selection(model)
         }.disposed(by: disposeBag)
         
-        viewModel.nftInfoModels.map { !$0.isEmpty }.bind(to: emptyLabel.rx.isHidden)
-            .disposed(by: disposeBag)
+        viewModel.isListEmpty.map{ !$0 }.bind(to: emptyLabel.rx.isHidden).disposed(by: disposeBag)
         
         loadBalance()
         refresh()
