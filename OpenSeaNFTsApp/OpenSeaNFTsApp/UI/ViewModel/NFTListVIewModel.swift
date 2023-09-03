@@ -9,6 +9,7 @@ import Foundation
 import OpenSeaNFTs
 import RxSwift
 import RxRelay
+import RxCocoa
 import web3swift
 import Web3Core
 import BigInt
