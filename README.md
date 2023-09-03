@@ -1,5 +1,9 @@
 # OpenSeaTestNetNFTs
 
+## Special Node
+
+### The code is development on macOS Ventura Version 13.1, Xcode Version 14.3.1, CocoaPod 1.12.1 and test on iOS 16.4
+
 ## List NFTs Feature Specs
 
 ## Story: User request to see the NFTs of a specific wallet address on a specific chain
@@ -356,3 +360,73 @@ GET
 }
 ```
 
+## List ETH Balance Feature Specs
+
+## Story: User request to see the ETH balance on a specific wallet address on a specific chain
+
+### Type#1
+
+```
+As an online user
+I want the app to show the ETH balance
+So I can see the ETH balance in my wallet
+```
+
+#### Acceptance criteria
+
+```
+Given the user has connectivity
+When the user requests to see the ETH balance
+Then the app should display the ETH balance
+```
+
+## Use Cases
+
+### Load ETH balance from remote use case
+
+#### Data:
+- URL
+- Wallet Address
+
+#### Primary path:
+1. Execute "Load ETH Balance" command.
+2. System download data from the URL.
+3. System validate downloaded data.
+4. System create ETH balance from valid data.
+5. System delivers ETH balance
+
+#### Invalid data error path:
+1. System delivers invalid data error.
+
+#### No connectivity error path:
+1. System delivers connectivity error.
+
+---
+
+## Model Specs
+
+### EHT Balance
+
+| property    | type   |
+|-------------|--------|
+| balance     | String |
+
+### Payload contract
+
+```
+curl  https://ethereum-goerli-rpc.allthatnode.com \
+--request POST \
+--header "Content-Type: application/json" \
+--data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x85fD692D2a075908079261F5E351e7fE0267dB02", "latest"],"id":1}'
+
+POST
+
+200 RESPONSE
+
+{
+  "id":1,
+  "jsonrpc": "2.0",
+  "result": "0x20ca070fdb90076" // 158972490234375000
+}
+
+```
